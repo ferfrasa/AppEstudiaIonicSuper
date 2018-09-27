@@ -1,6 +1,20 @@
+-->
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      <ion-title>
+        Proyectos
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar> <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
     <ion-title>{{ 'LIST_MASTER_TITLE' | translate }}</ion-title>
 
     <ion-buttons end>
@@ -12,6 +26,7 @@
 
 </ion-header>
 
+
 <ion-content>
 
   <ion-list>
@@ -20,9 +35,9 @@
         <ion-avatar item-start>
           <img [src]="item.profilePic" />
         </ion-avatar>
-        <h2>{{item.name}}</h2>
-        <p>{{item.about}}</p>
-        <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
+        <h2>{{items.name}}</h2>
+        <p>{{items.about}}</p>
+        <ion-note item-end *ngIf="items.note">{{currentItems.note}}</ion-note>
       </button>
 
       <ion-item-options>

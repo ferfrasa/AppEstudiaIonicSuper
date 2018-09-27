@@ -15,44 +15,44 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: 'signup.html'
 })
 export class SignupPage {
-  // The account fields for the login form.
-  // If you're using the username field with or without email, make
-  // sure to add it to the type
+   //datos de la cuenta
   account:{ id_firebase: string,
-   name: string, email: string,  password:string,password_confirmation:string,  
-   user_type_id: number}={
+    name: string, email: string,  password:string,password_confirmation:string,  
+    user_type_id: number}={
     id_firebase:" ",
     name: " ",
     email: " ", 
     password:"",
     password_confirmation:  "",
     user_type_id: 0
-    
-
    } ;
 
-  //objeto rol recibido
-  objetoRol: any;
+  //objeto rol recibido de pagina de rol
+   objetoRol: any;
 
 
   // Our translated text strings
   private signupErrorString: string;
-  formularioUsuario:FormGroup;
+   formularioUsuario:FormGroup;
 
 
   constructor(public navCtrl: NavController,
-    public user: User, public toastCtrl: ToastController,
-    public translateService: TranslateService, public authServiceProvider: AuthServiceProvider,
-    private auth: Authentication,public navParams: NavParams,
+    public user: User, 
+    public toastCtrl: ToastController,
+    public translateService: TranslateService, 
+    public authServiceProvider: AuthServiceProvider,
+    private auth: Authentication,
+    public navParams: NavParams,
     public loadingCtrl: LoadingController ,
-    public alertCtrl: AlertController,private fb: FormBuilder) {
+    public alertCtrl: AlertController,
+    private fb: FormBuilder) {
     
-      this.objetoRol = this.navParams.get("item");
+      this.objetoRol = this.navParams.get("item"); // obtiene los parametros de la pagina rol
       console.log("objeto r5ec22220ib"+this.objetoRol['id']); 
       this.buildForm();
+
       this.translateService.get('SIGNUP_ERROR').subscribe((value) => {
       this.signupErrorString = value;
-      
     })
   }
 
@@ -75,15 +75,13 @@ export class SignupPage {
   }
 
   doSignup(){
+    let loading = this.loadingCtrl.create({
+      content: 'Creando cuenta. Por favor, espere...'
+    });
+    loading.present();
 
-
-      let loading = this.loadingCtrl.create({
-          content: 'Creando cuenta. Por favor, espere...'
-       });
-        loading.present();
-
-  this.auth.createUserWithEmailAndPassword(this.account.email, this.account.password)
-  .then(result => {
+    this.auth.createUserWithEmailAndPassword(this.account.email, this.account.password)
+    .then(result => {
       loading.dismiss(); 
      
       if (result){
@@ -95,20 +93,16 @@ export class SignupPage {
        // this.account.password_confirmation="123456789";
         //this.account.doc="12345677";
         this.account.user_type_id =this.objetoRol['id'];
-
-
         console.log(this.account);
-        
         this.doSignup2();
           // this.navCtrl.push('CardsPage');
-          
-         };
-        }).catch(error => {
-            loading.dismiss();
-
-            console.log(error);
-            this.alert('Error', 'Ha ocurrido un error inesperado. Por favor intente nuevamente.');
-        });}
+      };
+    }).catch(error => {
+        loading.dismiss();
+        console.log(error);
+        this.alert('Error', 'Ha ocurrido un error inesperado. Por favor intente nuevamente.');
+        });
+   }
         // return this.auth.createUserWithGoogle();
 
           //this.auth().getRedirectResult().then(result => console.log(result));

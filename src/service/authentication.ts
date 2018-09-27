@@ -14,7 +14,7 @@ export class  Authentication{
     }
 
     getUser(){
-
+         //obtener datos del usuario actual
         let user = new Array(3);
         user[0]=this.angularAuth.auth.currentUser.uid;
         user[1]=this.angularAuth.auth.currentUser.displayName;
@@ -44,7 +44,7 @@ export class  Authentication{
            return localStorage.getItem(identificador);
            // trae le valor de la llave indetificador que este en ese momento local
        }
-
+    //crear usuario con proveedor
     createUserWithProvider(provider){
         return this.angularAuth.auth.signInWithRedirect(provider)//redirige al proveedor
         .then(result => {
@@ -70,5 +70,15 @@ export class  Authentication{
     }
     createUserWithEmailAndPassword(email,password): Promise<any>{
         return  this.angularAuth.auth.createUserWithEmailAndPassword(email,password);
-      }
+    }
+
+    login(email,password): Promise<any>{
+        return this.angularAuth.auth.signInAndRetrieveDataWithEmailAndPassword(email,password);
+
+    }
+    logOut(): Promise<any>{
+      return this.angularAuth.auth.signOut().then(()=>{
+          this.token=null;
+      });  
+    }
 }
