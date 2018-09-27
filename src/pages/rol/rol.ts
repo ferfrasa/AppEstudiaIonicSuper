@@ -1,7 +1,7 @@
 import { SignupPage } from './../signup/signup';
 import { AuthServiceProvider } from './../../providers/auth-service/auth-service';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 
 /**
  * Generated class for the RolPage page.
@@ -22,7 +22,7 @@ export class RolPage {
   itemRol: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-     public authServiceProvider: AuthServiceProvider) {
+     public authServiceProvider: AuthServiceProvider, public loadingCtrl: LoadingController) {
 
     this.selectedItem = navParams.get('item');
     this.icons = ['briefcase',  'contacts','happy', 'football'];
@@ -33,10 +33,16 @@ export class RolPage {
 
 
   ionViewDidLoad() {
+    let loading = this.loadingCtrl.create({
+      content: 'Espera por favor...'
+  });
+  loading.present();
+
 
     console.log('ionViewDidLoad RolPage');
     this.authServiceProvider.getData('user_types').subscribe(
       (data) => {
+        loading.dismiss();
         console.log("listas " + data);
         let j=0;
         for (let i in data) {

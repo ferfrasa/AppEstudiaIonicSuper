@@ -8,17 +8,17 @@
 
 
 <ion-content>
-  <form (submit)="doSignup()">
+  <form  (submit)="doSignup()">
     <ion-list>
 
       <ion-item>
-        <ion-label fixed>{{ 'NAME' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
+        <ion-label floating>{{ 'NAME' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.name" name="name" required></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
-        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+        <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
+        <ion-input type="email" [(ngModel)]="account.email" name="email" required></ion-input>
       </ion-item>
 
       <!--
@@ -31,16 +31,16 @@
       -->
 
       <ion-item>
-        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
-        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+        <ion-label floating >{{ 'PASSWORD' | translate }}</ion-label>
+        <ion-input type="password" [(ngModel)]="account.password" name="password" required></ion-input>
       </ion-item>
       <ion-item>
-          <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
-          <ion-input type="password"  ></ion-input>
+          <ion-label floating>Confirmar Contraseña</ion-label>
+          <ion-input type="password" [(ngModel)]="account.password_confirmation" name="password_confirmation" required  ></ion-input>
         </ion-item>
 
       <div padding>
-        <button ion-button color="primary" block>{{ 'SIGNUP_BUTTON' | translate }}</button>
+        <button  ion-button color="primary" block>{{ 'SIGNUP_BUTTON' | translate }}</button>
         <button ion-button (click)="createAccountWithGoogle()">
           <ion-icon name="logo-google"></ion-icon>
           &nbsp; Crear on Google
