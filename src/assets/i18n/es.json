@@ -44,5 +44,12 @@
 
   "CARDS_TITLE": "Social",
 
-  "SEARCH_TITLE": "Buscar"
+  "SEARCH_TITLE": "Buscar",
+  "CREATE_PROJECT":"Crear Proyecto",
+  "CATEGORY":"Categoria Proyecto",
+  "SPECTATOR":"Público del Proyecto",
+  "TAGS":"Tags del  Proyecto",
+  "NAME_PROJECT":"Nombre del Proyecto",
+  "DESCRIPTION_PROJECT":"Descripción del Proyecto"
+  
 }

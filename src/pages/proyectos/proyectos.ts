@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 
 /**
  * Generated class for the ProyectosPage page.
@@ -15,11 +15,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ProyectosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public  modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProyectosPage');
+  }
+
+  addProject(){
+     let modalCreate = this.modalCtrl.create('CreateProjectPage');
+     modalCreate.onDidDismiss(project =>{
+      if (project) {
+        //this.items.add(item);
+      }
+     })
+     modalCreate.present();
   }
 
 }

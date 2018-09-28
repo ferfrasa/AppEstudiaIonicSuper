@@ -22,7 +22,7 @@ export class RolPage {
   itemRol: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-     public authServiceProvider: AuthServiceProvider, public loadingCtrl: LoadingController) {
+    public authServiceProvider: AuthServiceProvider, public loadingCtrl: LoadingController) {
 
     this.selectedItem = navParams.get('item');
     this.icons = ['briefcase',  'contacts','happy', 'football'];
@@ -35,8 +35,8 @@ export class RolPage {
   ionViewDidLoad() {
     let loading = this.loadingCtrl.create({
       content: 'Espera por favor...'
-  });
-  loading.present();
+    });
+    loading.present();
 
 
     console.log('ionViewDidLoad RolPage');
