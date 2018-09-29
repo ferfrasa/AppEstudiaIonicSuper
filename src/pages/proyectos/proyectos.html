@@ -22,7 +22,25 @@
 
 
 <ion-content padding>
+  <ion-label>Actualmente te encuentras inscrito a los siguientes proyectos</ion-label>
+
+  <ion-list *ngFor="let item of categories">
 
 
+     
+     <ion-list-header >  
+        {{item.name}}
+     </ion-list-header>
+     <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/img/3.png">
+      </ion-avatar>
+      <h2>Finn</h2>
+      <h3>Don't Know What To Do!</h3>
+      <p>I've had a pretty messed up day. If we just...</p>
+    </ion-item>
+    
+      
+  </ion-list>
 
 </ion-content>

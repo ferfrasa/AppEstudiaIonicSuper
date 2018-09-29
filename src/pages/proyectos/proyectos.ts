@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 /**
  * Generated class for the ProyectosPage page.
@@ -14,12 +15,33 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
   templateUrl: 'proyectos.html',
 })
 export class ProyectosPage {
+  icons: string[];
+  categories: Array<{id: number, name: string, img:string}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public  modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public  modalCtrl: ModalController,public authServiceProvider: AuthServiceProvider) {
+      this.categories=[];
+      this.icons=[];
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProyectosPage');
+
+    this.authServiceProvider.getData('categories').subscribe((data)=>{
+        
+      console.log("tags " + data);
+      for (let i in data) {
+         
+        console.log("entro aqui");
+          this.categories.push({
+            id: parseInt(JSON.stringify(data[i]['id'])) ,    
+            name: JSON.stringify(data[i]['name_category']).toUpperCase().replace(/['"]+/g, ''),
+            img: this.icons[i]
+             
+          }); 
+      }
+     
+    }, err => { console.log(err); })
   }
 
   addProject(){

@@ -48,7 +48,23 @@ export class AuthServiceProvider {
     let apiUrl=localStorage.getItem("apiUrl");
     return this.http.post(apiUrl+type , json, options);
   }
-
+  
+  postDataJwt2(data, type, model) {
+    // let jwt=localStorage.getItem("jwt");//token de autorizacion
+     let headers = new HttpHeaders( //cabecera
+       {
+         'Content-Type': 'application/json'
+        /* ,
+        / 'Authorization':'Bearer '//+jwt*/
+       });
+      
+     const options = { headers: headers };
+      
+     let json = '{"'+model +'":'+data+'}'
+     console.log(json);
+     let apiUrl=localStorage.getItem("apiUrl");
+     return this.http.post(apiUrl+type , json, options);
+   }
 
   getData(uri) {
    // let jwt=localStorage.getItem("jwt");

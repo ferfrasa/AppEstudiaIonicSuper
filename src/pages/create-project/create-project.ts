@@ -52,9 +52,7 @@ export class CreateProjectPage {
 
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
-    });
-
-  
+    }); 
   }
 
    loadTags(data){
@@ -96,45 +94,46 @@ export class CreateProjectPage {
 
    }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CreateProjectPage');
-    let loading = this.loadingCtrl.create({
-      content: 'Espera por favor...'
-    });
-    loading.present();
-    this.authServiceProvider.getData('tags').subscribe((data)=>{
-      
-      console.log("tags " + data);
-      this.loadTags(data);
-    }, err => { console.log(err); })
+   ionViewDidLoad() {
+      console.log('ionViewDidLoad CreateProjectPage');
+      let loading = this.loadingCtrl.create({
+        content: 'Espera por favor...'
+      });
+      loading.present();
+      this.authServiceProvider.getData('tags').subscribe((data)=>{
+        
+        console.log("tags " + data);
+        this.loadTags(data);
+      }, err => { console.log(err); })
 
-    this.authServiceProvider.getData('categories').subscribe(
-      (data) => {
-        //loading.dismiss();
-        console.log("Category " + data);
-         this.loadCategory(data);
-        },err => { console.log(err); }
-    );
-    this.authServiceProvider.getData('spectators').subscribe(
-      (data) => {
-        loading.dismiss();
-        console.log("spectators " + data);
-         this.loadSpectator(data);
-        },err => { console.log(err); }
-    );
+      this.authServiceProvider.getData('categories').subscribe(
+        (data) => {
+          //loading.dismiss();
+          console.log("Category " + data);
+          this.loadCategory(data);
+          },err => { console.log(err); }
+      );
+      this.authServiceProvider.getData('spectators').subscribe(
+        (data) => {
+          loading.dismiss();
+          console.log("spectators " + data);
+          this.loadSpectator(data);
+          },err => { console.log(err); }
+      );
 
-  }
+   }
 
   createProject(){
   }
   done() {
-    
+
     console.log("entro aca545");
     if (!this.form.valid) { return; }
     console.log(JSON.stringify(this.form.value));
     this.authServiceProvider.postDataJwt(this.form.value,"projects","project")
     .subscribe(
       data => {
+        this.createHasMany(data);
         let toast = this.toastCtrl.create({
           message: "Se agrego el proyecto :)",
           duration: 3000,
@@ -154,14 +153,41 @@ export class CreateProjectPage {
     });
     toast.present(); }
     );
-   
+
     
-   
   }
 
   cancel(){
    this.viewCtrl.dismiss();
   }
+
+  createHasMany(data){
+    console.log("es de proyecto  "+ data);
+    let id=localStorage.getItem("token");
+    this.authServiceProvider.getData("user_firebases/"+id)
+    .subscribe(
+      result => {
+        console.log("es un resul "+JSON.stringify(result));
+        let user= JSON.stringify(result['user_id']).toUpperCase().replace(/['"]+/g, '');
+        let proyecto =JSON.stringify(data['id']).toUpperCase().replace(/['"]+/g, '');
+        console.log(user);
+        console.log(proyecto);
+        
+        let dataP = '{"user_id":'+user+', "project_id":'+proyecto+', "rol":true}';
+       this.authServiceProvider.postDataJwt2(dataP,"has_user_projects","has_user_project")
+       .subscribe(result =>{
+           console.log(result +"registro")
+        });
+        
+      },
+      err => {
+       console.log(err);
+      }
+    );
+
+       
+  }
+
  
 }
 

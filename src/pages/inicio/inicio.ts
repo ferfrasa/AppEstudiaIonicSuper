@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 /**
  * Generated class for the InicioPage page.
@@ -14,12 +15,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'inicio.html',
 })
 export class InicioPage {
+  projects: Array<{id: number, name: string, description:string, partic: number, prom:number}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public authServiceProvider: AuthServiceProvider) {
+    this.projects=[];
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InicioPage');
+    this.authServiceProvider.getData('listps').subscribe((data)=>{
+        
+      console.log("tags " + data);
+      for (let i in data) {
+         
+        console.log("entro aqui");
+          this.projects.push({
+           id: parseInt(JSON.stringify(data[i]['id'])),
+           name: JSON.stringify(data[i]['name_project']).toUpperCase().replace(/['"]+/g, ''),
+           description: JSON.stringify(data[i]['description_project']).replace(/['"]+/g, ''),
+           partic: parseInt(JSON.stringify(data[i]['participantes'])),
+           prom: parseInt(JSON.stringify(data[i]['prom_calif_project'])),
+          
+            //img: this.icons[i]
+             
+          }); 
+      }
+     
+    }, err => { console.log(err); })
   }
 
 }

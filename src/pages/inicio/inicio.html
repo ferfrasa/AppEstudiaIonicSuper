@@ -19,32 +19,38 @@
 <ion-content padding>
   <div>
   <ion-label>Algunos proyectos que te pueden interesar</ion-label>
-  <ion-card>
+  <ion-card *ngFor= "let item of projects">
     <img src="assets/img/bjork-live.jpg"/>
     <ion-card-content>
       <ion-card-title>
-        Proyecto 1
+        {{item.name}}
       </ion-card-title>
       <p>
-        Aqui se pondra la descripcion del proyecto1 
-        segun lo que traiga rails
+       {{item.description}}
       </p>
     </ion-card-content>
+    <ion-row>
+        <ion-col>
+          <button ion-button icon-start clear small>
+            <ion-icon ios="ios-contacts" md="md-contacts"></ion-icon>
+            <div>{{item.partic}}</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-start clear small>
+            <ion-icon ios="ios-star" md="md-star"></ion-icon>
+            <div>{{item.prom}}</div>
+          </button>
+        </ion-col>
+        <!--<ion-col center text-center>
+          <ion-note>
+            11h ago
+          </ion-note>
+        </ion-col>-->
+      </ion-row>
 
   </ion-card>
-  <ion-card>
-      <img src="assets/img/badu-live.png"/>
-      <ion-card-content>
-        <ion-card-title>
-          Proyecto 2
-        </ion-card-title>
-        <p>
-          Aqui se pondra la descripcion del proyecto2 
-          segun lo que traiga rails
-        </p>
-      </ion-card-content>
-  
-    </ion-card></div>
+ </div>
 
 
 </ion-content>
