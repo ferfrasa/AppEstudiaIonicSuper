@@ -50,6 +50,7 @@
   "SPECTATOR":"Público del Proyecto",
   "TAGS":"Tags del  Proyecto",
   "NAME_PROJECT":"Nombre del Proyecto",
-  "DESCRIPTION_PROJECT":"Descripción del Proyecto"
+  "DESCRIPTION_PROJECT":"Descripción del Proyecto",
+  "LOGOUT":"Cerrar Sesion"
   
 }

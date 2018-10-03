@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, MenuController, NavController, Platform } from 'ionic-angular';
+import { MainPage } from '../';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -64,11 +65,21 @@ export class TutorialPage {
   ionViewDidEnter() {
     // the root left menu should be disabled on the tutorial page
     this.menu.enable(false);
+   
   }
 
   ionViewWillLeave() {
     // enable the root left menu when leaving the tutorial page
     this.menu.enable(true);
+  }
+  ionViewWillEnter(){
+    //this.navCtrl.setRoot(this.navCtrl.getActive().component);
+    let user=localStorage.getItem("user");
+    let jwt=localStorage.getItem("jwt");
+    let token=localStorage.getItem("token");
+    if(user && jwt && token  ){
+        this.navCtrl.setRoot(MainPage);
+    }
   }
 
 }

@@ -1,3 +1,8 @@
+import { PerfilPage } from './../pages/perfil/perfil';
+import { InicioPage } from './../pages/inicio/inicio';
+import { FirstRunPage } from './../pages/index';
+import { TutorialPage } from './../pages/tutorial/tutorial';
+import { CardsPageModule } from './../pages/cards/cards.module';
 import { RolPage } from './../pages/rol/rol';
 import { Component, ViewChild } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -5,8 +10,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform } from 'ionic-angular';
 import { Authentication } from '../service/authentication';
+import { App } from 'ionic-angular';
 
-import { FirstRunPage } from '../pages';
 import { Settings } from '../providers';
 
 @Component({
@@ -18,18 +23,18 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-    { title: 'Welcome', component: 'WelcomePage' },
+  /*  { title: 'Welcome', component: 'WelcomePage' },*/
     {title: 'Mi Perfil', component: 'PerfilPage'},
     { title: 'Mis Proyectos', component: 'ProyectosPage'},
     { title: 'Mis Actividades Cercanas', component: 'ActividadesPage'},
-    { title: 'Tabs', component: 'TabsPage' },
+   /* { title: 'Tabs', component: 'TabsPage' },*/
     { title: 'Cards', component: 'CardsPage' },
     { title: 'Content', component: 'ContentPage' },
-    { title: 'Login', component: 'LoginPage' },
+   /* { title: 'Login', component: 'LoginPage' },
     { title: 'Signup', component: 'SignupPage' },
-    { title: 'Master Detail', component: 'ListMasterPage' },
-    { title: 'Menu', component: 'MenuPage' },
-    { title: 'Settings', component: 'SettingsPage' },
+    { title: 'Master Detail', component: 'ListMasterPage' },*/
+    /*{ title: 'Menu', component: 'MenuPage' },*/
+    /*CardsPageModule{ title: 'Settings', component: 'SettingsPage' },*/
     { title: 'Search', component: 'SearchPage' },
     {title: 'jh', component: 'InicioPage'}
    
@@ -39,7 +44,7 @@ export class MyApp {
     platform: Platform, settings: Settings, 
     private config: Config, private statusBar: StatusBar, 
     private splashScreen: SplashScreen,
-     public auth: Authentication) {
+     public auth: Authentication,public appCtrl: App) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -84,6 +89,27 @@ export class MyApp {
   }
 
   logOut(){
-    this.auth.logOut();  
+      localStorage.removeItem("user");
+      localStorage.removeItem("jwt");
+      //this.auth.logOut(); 
+      //localStorage.clear();
+
+     // this.nav.pop();
+      this.nav.push('WelcomePage');
+      //this.nav.setRoot('WelcomePage');
+
+      // this.nav.popToRoot(); 
+     // this.appCtrl.getRootNav().setRoot('WelcomePage');
+     
+    
+
   }
-}
+    
+   
+  isThereASession():boolean{
+        return localStorage.getItem("jwt")!= undefined;
+    }
+   
+    
+  }
+

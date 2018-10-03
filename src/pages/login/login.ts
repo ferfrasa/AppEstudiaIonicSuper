@@ -1,10 +1,12 @@
+import { AuthServiceProvider } from './../../providers/auth-service/auth-service';
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController,AlertController, LoadingController } from 'ionic-angular';
-
+import { Validators,FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import { User } from '../../providers';
 import { MainPage } from '../';
 import { Authentication } from '../../service/authentication';
+
 
 @IonicPage()
 @Component({
@@ -15,6 +17,7 @@ export class LoginPage {
   // The account fields for the login form.
   // If you're using the username field with or without email, make
   // sure to add it to the type
+  credentials: FormGroup
   account: { email: string, password: string } = {
     email: "",
     password: ""
@@ -29,8 +32,16 @@ export class LoginPage {
     public translateService: TranslateService,
     private auth: Authentication,
     public alertCtrl: AlertController,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController,
+    private formBuilder: FormBuilder,
+    public authServiceProvider:AuthServiceProvider) {
 
+    this.credentials= this.formBuilder.group({
+      email: new FormControl('', Validators.compose(
+        [Validators.required,
+         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')])),
+      password:['', Validators.required]
+    });
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
     })
@@ -38,26 +49,27 @@ export class LoginPage {
 
   // Attempt to login in through our User service
   doLogin() {
+    let userData={
+      auth:{
+        email:this.credentials.value.email,
+        password:this.credentials.value.password
+      }
+    }
     let loading = this.loadingCtrl.create({
       content: 'Cargando...'
     });
     loading.present();
 
-    this.auth.login(this.account.email,this.account.password).then(result =>{
-     // this.navCtrl.push('CardsPage');
-
-     loading.dismiss();
-      /*this.navCtrl.push('CardsPage')pagina de cards;
-      /*this.navCtrl.push('ContentPage')- pagina vacia;*/
-     // this.navCtrl.push('ItemCreatePage'); # formulario de crear
-      /*this.navCtrl.push('ItemDetailPage'); detaales tems*/
-      /*this.navCtrl.push('ListMasterPage'); #lista de items*/
-      this.navCtrl.push(MainPage);/* #pagina del content*/
-      /*this.navCtrl.push('SearchPage')- ;*/
-      /*this.navCtrl.push('SettingsPage'); pagina de settings*/
-      /*this.navCtrl.push('TabsPage')# pagina con tabs;*/
-      /*this.navCtrl.push('TutorialPage'); #indexsliderer*/
-      /*this.navCtrl.push('WelcomePage'); # logjn and register*/
+    this.auth.login(this.credentials.value.email,this.credentials.value.password).then(result =>{
+      this.authServiceProvider.postData2(userData,"user_token")
+      .subscribe(data=>{
+        console.log(JSON.stringify(data));
+        localStorage.setItem('user',JSON.stringify(data["user"]));
+        localStorage.setItem('jwt',data["jwt"]);
+        loading.dismiss();
+     
+        this.navCtrl.push(MainPage);
+      })
 
     }).catch(error=>{
       loading.dismiss();
@@ -85,5 +97,14 @@ export class LoginPage {
         buttons: ['OK']
     });
     alert.present();
-}
+  }
+  ionViewWillEnter(){
+    let user=localStorage.getItem("user");
+    let jwt=localStorage.getItem("jwt");
+    let token=localStorage.getItem("token");
+    if(user && jwt && token  ){
+        this.navCtrl.setRoot(MainPage);
+    }
+  }
+
 }

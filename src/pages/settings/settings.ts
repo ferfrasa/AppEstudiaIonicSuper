@@ -72,6 +72,7 @@ export class SettingsPage {
 
   ionViewWillEnter() {
     // Build an empty form for the template to render
+    
     this.form = this.formBuilder.group({});
 
     this.page = this.navParams.get('page') || this.page;

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
+import { MainPage } from '../';
 
 /**
  * The Welcome Page is a splash page that quickly describes the app,
@@ -22,5 +23,13 @@ export class WelcomePage {
 
   signup() {
     this.navCtrl.push('RolPage');
+  }
+  ionViewWillEnter(){
+    let user=localStorage.getItem("user");
+    let jwt=localStorage.getItem("jwt");
+    let token=localStorage.getItem("token");
+    if(user && jwt && token  ){
+        this.navCtrl.setRoot(MainPage);
+    }
   }
 }

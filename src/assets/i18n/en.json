@@ -70,7 +70,8 @@
   "SPECTATOR":"Spectator Project",
   "TAGS":"Project Tags",
   "NAME_PROJECT":"Name Project",
-  "DESCRIPTION_PROJECT":"Description Project"
+  "DESCRIPTION_PROJECT":"Description Project",
+  "LOGOUT":"Logout"
 
 
 }

@@ -14,6 +14,20 @@ export class AuthServiceProvider {
   constructor(public http: HttpClient) {
     console.log('Hello AuthServiceProvider Provider');
   }
+  postData2(data, url) {
+    let headers = new HttpHeaders(
+      {
+        'Content-Type': 'application/json'
+      });
+     
+    const options = { headers: headers };
+    let json = JSON.stringify(data);
+    console.log(json);
+    let apiUrl=localStorage.getItem("apiUrl");
+    let completeUrl=apiUrl + url ;
+    console.log(json);
+    return this.http.post(completeUrl, json, options);
+  }
   postData(data, url) {
     let headers = new HttpHeaders(
       {

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController, NavParams, LoadingController, AlertController } from 'ionic-angular';
-
 import { User } from '../../providers';
 import { MainPage } from '..';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
@@ -60,6 +59,28 @@ export class SignupPage {
     this.authServiceProvider.postData(this.account, "users")
     .subscribe(
       data => {
+        let userData={
+          auth:{
+            email:this.account.email,
+            password:this.account.password
+          }
+        }
+        this.authServiceProvider.postData2(userData,"user_token")
+        .subscribe(data=>{
+          console.log(JSON.stringify(data));
+        localStorage.setItem('user',JSON.stringify(data["user"]));
+        localStorage.setItem('jwt',data["jwt"]);
+        localStorage.setItem('name',data['name']);
+        console.log(localStorage.getItem('name'));
+
+
+
+       /* {"jwt":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Mzg2MDE4NzgsInN1YiI6MjF9.M0ltTsKFYQKf4bynZsS8g7nPspxx9yT_v5quYpdqmAE",
+        "user":{"id":21,"name":" Lider","email":"lider@prueba.com","doc":null,"password_digest":"$2a$10$jWNNfhfEt/6TCjZ.FB26TuitXYUYrgHOr/7eydGPxjL3d0vtGsEPG","user_type_id":40,"university_id":5,"created_at":"2018-09-27T15:50:37.185Z","updated_at":"2018-09-27T15:50:37.185Z","token":"3affabbc3416be07b82ce73c91e15867","status_user":true,"id_firebase":"6NJPTzx4wefVwsyIDcpYbIaoMdU2"}}*/
+        //localStorage.*
+        this.navCtrl.push(MainPage);
+
+        })
          this.navCtrl.push(MainPage)
 
       },
@@ -85,13 +106,10 @@ export class SignupPage {
       loading.dismiss(); 
      
       if (result){
+        
         console.log(this.auth.getUser()); 
         this.account.id_firebase=this.auth.getUser()[0]; 
         this.account.email=this.auth.getUser()[2];
-        //this.account.name ="prueba";
-       // this.account.password="123456789";
-       // this.account.password_confirmation="123456789";
-        //this.account.doc="12345677";
         this.account.user_type_id =this.objetoRol['id'];
         console.log(this.account);
         this.doSignup2();
@@ -140,6 +158,15 @@ export class SignupPage {
       password_confirmation:['',[Validators.required,Validators.minLength(5),Validators.maxLength(100)]],
       email:['',[Validators.required,Validators.email]]
     });
+  }
+
+  ionViewWillEnter(){
+    let user=localStorage.getItem("user");
+    let jwt=localStorage.getItem("jwt");
+    let token=localStorage.getItem("token");
+    if(user && jwt && token  ){
+        this.navCtrl.setRoot(MainPage);
+    }
   }
 
 }
