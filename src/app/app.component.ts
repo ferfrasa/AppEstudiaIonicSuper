@@ -1,5 +1,4 @@
-import { PerfilPage } from './../pages/perfil/perfil';
-import { InicioPage } from './../pages/inicio/inicio';
+
 import { FirstRunPage } from './../pages/index';
 import { TutorialPage } from './../pages/tutorial/tutorial';
 import { CardsPageModule } from './../pages/cards/cards.module';
@@ -23,7 +22,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-  /*  { title: 'Welcome', component: 'WelcomePage' },*/
+   
     {title: 'Mi Perfil', component: 'PerfilPage'},
     { title: 'Mis Proyectos', component: 'ProyectosPage'},
     { title: 'Mis Actividades Cercanas', component: 'ActividadesPage'},
@@ -90,24 +89,15 @@ export class MyApp {
 
   logOut(){
       localStorage.removeItem("user");
-      localStorage.removeItem("jwt");
-      //this.auth.logOut(); 
+      localStorage.removeItem("jwt");  
+      this.auth.logOut(); 
       //localStorage.clear();
-
-     // this.nav.pop();
-      this.nav.push('WelcomePage');
-      //this.nav.setRoot('WelcomePage');
-
-      // this.nav.popToRoot(); 
-     // this.appCtrl.getRootNav().setRoot('WelcomePage');
-     
-    
-
+      this.nav.setRoot('WelcomePage');
   }
     
    
   isThereASession():boolean{
-        return localStorage.getItem("jwt")!= undefined;
+        return localStorage.getItem("jwt")!= null;
     }
    
     

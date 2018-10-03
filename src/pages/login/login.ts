@@ -1,7 +1,7 @@
 import { AuthServiceProvider } from './../../providers/auth-service/auth-service';
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController,AlertController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController,AlertController, MenuController,LoadingController } from 'ionic-angular';
 import { Validators,FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import { User } from '../../providers';
 import { MainPage } from '../';
@@ -34,7 +34,7 @@ export class LoginPage {
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     private formBuilder: FormBuilder,
-    public authServiceProvider:AuthServiceProvider) {
+    public authServiceProvider:AuthServiceProvider, public menu: MenuController) {
 
     this.credentials= this.formBuilder.group({
       email: new FormControl('', Validators.compose(
@@ -98,6 +98,10 @@ export class LoginPage {
     });
     alert.present();
   }
+  ionViewDidLoad(){
+    this.menu.enable(false);
+  }
+ 
   ionViewWillEnter(){
     let user=localStorage.getItem("user");
     let jwt=localStorage.getItem("jwt");

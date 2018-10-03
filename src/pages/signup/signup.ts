@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { IonicPage, MenuController,NavController, ToastController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { User } from '../../providers';
 import { MainPage } from '..';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
@@ -44,7 +44,8 @@ export class SignupPage {
     public navParams: NavParams,
     public loadingCtrl: LoadingController ,
     public alertCtrl: AlertController,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    public menu:MenuController) {
     
       this.objetoRol = this.navParams.get("item"); // obtiene los parametros de la pagina rol
       console.log("objeto r5ec22220ib"+this.objetoRol['id']); 
@@ -159,7 +160,10 @@ export class SignupPage {
       email:['',[Validators.required,Validators.email]]
     });
   }
-
+  ionViewDidLoad(){
+    this.menu.enable(false);
+  }
+ 
   ionViewWillEnter(){
     let user=localStorage.getItem("user");
     let jwt=localStorage.getItem("jwt");

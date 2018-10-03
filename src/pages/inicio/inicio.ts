@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 /**
@@ -17,13 +17,14 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 export class InicioPage {
   projects: Array<{id: number, name: string, description:string, partic: number, prom:number}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authServiceProvider: AuthServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menu:MenuController, public authServiceProvider: AuthServiceProvider) {
     this.projects=[];
   }
-
+ 
   ionViewDidLoad() {
+    this.menu.enable(true);
     console.log('ionViewDidLoad InicioPage');
-    this.authServiceProvider.getData('listps').subscribe((data)=>{
+    this.authServiceProvider.getDataWithJWT('listps').subscribe((data)=>{
         
       console.log("tags " + data);
       for (let i in data) {
@@ -42,6 +43,10 @@ export class InicioPage {
       }
      
     }, err => { console.log(err); })
+  }
+  ionViewWillLeave() {
+    // enable the root left menu when leaving the tutorial page
+    this.menu.enable(false);
   }
 
 }

@@ -43,16 +43,14 @@ export class AuthServiceProvider {
     console.log(json);
     return this.http.post(completeUrl, json, options);
   }
-
-
    
   postDataJwt(data, type, model) {
-   // let jwt=localStorage.getItem("jwt");//token de autorizacion
+    let jwt=localStorage.getItem("jwt");//token de autorizacion
     let headers = new HttpHeaders( //cabecera
       {
         'Content-Type': 'application/json'
-       /* ,
-       / 'Authorization':'Bearer '//+jwt*/
+        ,
+       'Authorization':'Bearer '+jwt
       });
      
     const options = { headers: headers };
@@ -64,12 +62,12 @@ export class AuthServiceProvider {
   }
   
   postDataJwt2(data, type, model) {
-    // let jwt=localStorage.getItem("jwt");//token de autorizacion
+     let jwt=localStorage.getItem("jwt");//token de autorizacion
      let headers = new HttpHeaders( //cabecera
        {
          'Content-Type': 'application/json'
-        /* ,
-        / 'Authorization':'Bearer '//+jwt*/
+         ,
+        'Authorization':'Bearer '+jwt
        });
       
      const options = { headers: headers };
@@ -95,6 +93,23 @@ export class AuthServiceProvider {
     console.log("     "+apiUrl);
     return this.http.get(apiUrl ,options);
   }
+
+  
+  getDataWithJWT(uri) {
+     let jwt=localStorage.getItem("jwt");
+     let headers = new HttpHeaders(
+       {
+         'Content-Type': 'application/json'
+         ,
+        'Authorization':'Bearer '+jwt
+       });
+      
+     const options = { headers: headers };
+        
+     let apiUrl=localStorage.getItem("apiUrl")+uri;
+     console.log("     "+apiUrl);
+     return this.http.get(apiUrl ,options);
+   }
 
  }
  

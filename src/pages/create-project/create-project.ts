@@ -100,20 +100,20 @@ export class CreateProjectPage {
         content: 'Espera por favor...'
       });
       loading.present();
-      this.authServiceProvider.getData('tags').subscribe((data)=>{
+      this.authServiceProvider.getDataWithJWT('tags').subscribe((data)=>{
         
         console.log("tags " + data);
         this.loadTags(data);
       }, err => { console.log(err); })
 
-      this.authServiceProvider.getData('categories').subscribe(
+      this.authServiceProvider.getDataWithJWT('categories').subscribe(
         (data) => {
           //loading.dismiss();
           console.log("Category " + data);
           this.loadCategory(data);
           },err => { console.log(err); }
       );
-      this.authServiceProvider.getData('spectators').subscribe(
+      this.authServiceProvider.getDataWithJWT('spectators').subscribe(
         (data) => {
           loading.dismiss();
           console.log("spectators " + data);
@@ -174,7 +174,7 @@ export class CreateProjectPage {
         console.log(proyecto);
         
         let dataP = '{"user_id":'+user+', "project_id":'+proyecto+', "rol":true}';
-       this.authServiceProvider.postDataJwt2(dataP,"has_user_projects","has_user_project")
+       this.authServiceProvider.postDataJwt(dataP,"has_user_projects","has_user_project")
        .subscribe(result =>{
            console.log(result +"registro")
         });

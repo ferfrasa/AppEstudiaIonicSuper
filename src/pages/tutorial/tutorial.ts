@@ -72,8 +72,10 @@ export class TutorialPage {
     // enable the root left menu when leaving the tutorial page
     this.menu.enable(true);
   }
+  ionViewDidLoad(){
+    this.menu.enable(false);
+  }
   ionViewWillEnter(){
-    //this.navCtrl.setRoot(this.navCtrl.getActive().component);
     let user=localStorage.getItem("user");
     let jwt=localStorage.getItem("jwt");
     let token=localStorage.getItem("token");
@@ -81,5 +83,4 @@ export class TutorialPage {
         this.navCtrl.setRoot(MainPage);
     }
   }
-
 }

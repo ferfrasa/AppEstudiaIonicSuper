@@ -27,7 +27,7 @@ export class ProyectosPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProyectosPage');
 
-    this.authServiceProvider.getData('categories').subscribe((data)=>{
+    this.authServiceProvider.getDataWithJWT('categories').subscribe((data)=>{
         
       console.log("tags " + data);
       for (let i in data) {

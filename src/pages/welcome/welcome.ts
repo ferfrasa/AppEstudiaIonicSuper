@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, MenuController } from 'ionic-angular';
 import { MainPage } from '../';
 
 /**
@@ -15,7 +15,15 @@ import { MainPage } from '../';
 })
 export class WelcomePage {
 
-  constructor(public navCtrl: NavController) { }
+  constructor(public navCtrl: NavController, public menu:MenuController) { }
+  
+  ionViewDidLoad(){
+    this.menu.enable(false);
+  }
+  ionViewWillLeave() {
+    // enable the root left menu when leaving the tutorial page
+   
+  }
 
   login() {
     this.navCtrl.push('LoginPage');
@@ -31,5 +39,7 @@ export class WelcomePage {
     if(user && jwt && token  ){
         this.navCtrl.setRoot(MainPage);
     }
+    console.log(localStorage.getItem('jwt'));
+
   }
 }
