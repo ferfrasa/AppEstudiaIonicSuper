@@ -1,8 +1,5 @@
 
 import { FirstRunPage } from './../pages/index';
-import { TutorialPage } from './../pages/tutorial/tutorial';
-import { CardsPageModule } from './../pages/cards/cards.module';
-import { RolPage } from './../pages/rol/rol';
 import { Component, ViewChild } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -30,8 +27,8 @@ export class MyApp {
     { title: 'Cards', component: 'CardsPage' },
     { title: 'Content', component: 'ContentPage' },
    /* { title: 'Login', component: 'LoginPage' },
-    { title: 'Signup', component: 'SignupPage' },
-    { title: 'Master Detail', component: 'ListMasterPage' },*/
+    { title: 'Signup', component: 'SignupPage' },*/
+    { title: 'Master Detail', component: 'ListMasterPage' },
     /*{ title: 'Menu', component: 'MenuPage' },*/
     /*CardsPageModule{ title: 'Settings', component: 'SettingsPage' },*/
     { title: 'Search', component: 'SearchPage' },
@@ -89,9 +86,14 @@ export class MyApp {
 
   logOut(){
       localStorage.removeItem("user");
-      localStorage.removeItem("jwt");  
+      localStorage.removeItem("jwt");
+      localStorage.removeItem("name");
+      localStorage.removeItem("email");
+      localStorage.removeItem("user_type");
+      localStorage.removeItem("university");  
+      localStorage.removeItem("status");  
       this.auth.logOut(); 
-      //localStorage.clear();
+     
       this.nav.setRoot('WelcomePage');
   }
     

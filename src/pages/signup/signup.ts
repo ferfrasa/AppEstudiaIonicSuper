@@ -69,17 +69,14 @@ export class SignupPage {
         this.authServiceProvider.postData2(userData,"user_token")
         .subscribe(data=>{
           console.log(JSON.stringify(data));
-        localStorage.setItem('user',JSON.stringify(data["user"]));
-        localStorage.setItem('jwt',data["jwt"]);
-        localStorage.setItem('name',data['name']);
-        console.log(localStorage.getItem('name'));
-
-
-
-       /* {"jwt":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1Mzg2MDE4NzgsInN1YiI6MjF9.M0ltTsKFYQKf4bynZsS8g7nPspxx9yT_v5quYpdqmAE",
-        "user":{"id":21,"name":" Lider","email":"lider@prueba.com","doc":null,"password_digest":"$2a$10$jWNNfhfEt/6TCjZ.FB26TuitXYUYrgHOr/7eydGPxjL3d0vtGsEPG","user_type_id":40,"university_id":5,"created_at":"2018-09-27T15:50:37.185Z","updated_at":"2018-09-27T15:50:37.185Z","token":"3affabbc3416be07b82ce73c91e15867","status_user":true,"id_firebase":"6NJPTzx4wefVwsyIDcpYbIaoMdU2"}}*/
-        //localStorage.*
-        this.navCtrl.push(MainPage);
+          localStorage.setItem('user',JSON.stringify(data["user"]["id"]));
+          localStorage.setItem('name',JSON.stringify(data["user"]["name"]));
+          localStorage.setItem('email',JSON.stringify(data["user"]["email"]));
+          localStorage.setItem('user_type',JSON.stringify(data["user"]["user_type_id"]));
+          localStorage.setItem('university',JSON.stringify(data["user"]["university_id"]));
+          localStorage.setItem('status',JSON.stringify(data["user"]["status_user"]));
+          localStorage.setItem('jwt',data["jwt"]);
+         this.navCtrl.push(MainPage);
 
         })
          this.navCtrl.push(MainPage)
@@ -87,7 +84,7 @@ export class SignupPage {
       },
       err => { console.log(err); 
        // Unable to sign up
-    let toast = this.toastCtrl.create({
+      let toast = this.toastCtrl.create({
       message: this.signupErrorString,
       duration: 3000,
       position: 'top'

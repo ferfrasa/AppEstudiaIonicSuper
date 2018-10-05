@@ -61,7 +61,7 @@ export class AuthServiceProvider {
     return this.http.post(apiUrl+type , json, options);
   }
   
-  postDataJwt2(data, type, model) {
+  postDataJwt2(data, type, model)  {
      let jwt=localStorage.getItem("jwt");//token de autorizacion
      let headers = new HttpHeaders( //cabecera
        {
@@ -90,8 +90,8 @@ export class AuthServiceProvider {
     const options = { headers: headers };
        
     let apiUrl=localStorage.getItem("apiUrl")+uri;
-    console.log("     "+apiUrl);
-    return this.http.get(apiUrl ,options);
+    console.log(apiUrl);
+    return this.http.get(apiUrl.trim() ,options);
   }
 
   
@@ -110,6 +110,22 @@ export class AuthServiceProvider {
      console.log("     "+apiUrl);
      return this.http.get(apiUrl ,options);
    }
+
+   getDataWithJWT2(uri,id) {
+    let jwt=localStorage.getItem("jwt");
+    let headers = new HttpHeaders(
+      {
+        'Content-Type': 'application/json'
+        ,
+       'Authorization':'Bearer '+jwt
+      });
+     
+    const options = { headers: headers };
+       
+    let apiUrl=localStorage.getItem("apiUrl")+uri+id;
+    console.log("     "+apiUrl);
+    return this.http.get(apiUrl ,options);
+  }
 
  }
  

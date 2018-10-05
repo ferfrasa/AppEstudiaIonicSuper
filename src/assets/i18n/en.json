@@ -71,7 +71,20 @@
   "TAGS":"Project Tags",
   "NAME_PROJECT":"Name Project",
   "DESCRIPTION_PROJECT":"Description Project",
-  "LOGOUT":"Logout"
+  "LOGOUT":"Logout",
+  "EVERYBODY":"Everybody",
+  "RECOMMENDED":"Recommended For You" ,
+  "NOTHING" :"Not found projects",
+  "JOIN":"Join",
+  "OK_PROJECT":"Project created successfully :)",
+  "ERROR_PROJECT_CREATE":"The project could not be added, TRY AGAIN :(",
+  "JOIN_PROJECT":" You have joined a new project :)",
+  "JOIN_PROJECT_ERROR":"Something went wrong, try again to join a project :(",
+  "SEE_MORE":"See More"
+
+ 
+  
+
 
 
 }

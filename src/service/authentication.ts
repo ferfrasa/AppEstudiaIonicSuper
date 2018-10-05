@@ -56,7 +56,7 @@ export class  Authentication{
         });
     }
 
-    createUserWithGoogle():  Promise<any>{
+    createUserWithGoogle(): Promise<any>{
         let provider = new firebase.auth.GoogleAuthProvider(); //trae el proveedor de google
         return this.angularAuth.auth.signInWithRedirect(provider);
     }

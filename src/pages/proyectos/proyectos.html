@@ -19,9 +19,85 @@
       </ion-buttons>
     </ion-navbar>
   </ion-header>
+  <ion-content padding>
+    <div>
+    <ion-label>Algunos proyectos que te pueden interesar</ion-label>
+    <ion-card *ngFor= "let item of projects">
+      <img src="assets/img/bjork-live.jpg"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{item.name}}
+        </ion-card-title>
+        <p>
+         {{item.description}}
+        </p>
+      </ion-card-content>
+      <ion-row>
+          <ion-col>
+            <button ion-button icon-start clear small>
+              <ion-icon ios="ios-contacts" md="md-contacts"></ion-icon>
+              <div>{{item.partic}}</div>
+            </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button icon-start clear small>
+              <ion-icon ios="ios-star" md="md-star"></ion-icon>
+              <div>{{item.prom}}</div>
+            </button>
+          </ion-col>
+          <!--<ion-col center text-center>
+            <ion-note>
+              11h ago
+            </ion-note>
+          </ion-col>-->
+        </ion-row>
+  
+    </ion-card>
+   </div>
+  
+  
+  </ion-content>
+  
+  <!--<ion-content padding>
+      <div>
+      <ion-label>Algunos proyectos que te pueden interesar</ion-label>
+      <ion-card *ngFor= "let item of projects">
+        <img src="assets/img/bjork-live.jpg"/>
+        <ion-card-content>
+          <ion-card-title>
+            {{item.name}}
+          </ion-card-title>
+          <p>
+           {{item.description}}
+          </p>
+        </ion-card-content>
+        <ion-row>
+            <ion-col>
+              <button ion-button icon-start clear small>
+                <ion-icon ios="ios-contacts" md="md-contacts"></ion-icon>
+                <div>{{item.partic}}</div>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-start clear small>
+                <ion-icon ios="ios-star" md="md-star"></ion-icon>
+                <div>{{item.prom}}</div>
+              </button>
+            </ion-col>
+            <<ion-col center text-center>
+              <ion-note>
+                11h ago
+              </ion-note>
+            </ion-col>-->
+        <!--  </ion-row>
+    
+      </ion-card>
+     </div>
+    
+    
+    </ion-content>-->
 
-
-<ion-content padding>
+<!--<ion-content padding>
   <ion-label>Actualmente te encuentras inscrito a los siguientes proyectos</ion-label>
 
   <ion-list *ngFor="let item of categories">
@@ -43,4 +119,4 @@
       
   </ion-list>
 
-</ion-content>
+</ion-content>-->

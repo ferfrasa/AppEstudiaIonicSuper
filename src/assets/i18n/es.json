@@ -51,6 +51,15 @@
   "TAGS":"Tags del  Proyecto",
   "NAME_PROJECT":"Nombre del Proyecto",
   "DESCRIPTION_PROJECT":"Descripción del Proyecto",
-  "LOGOUT":"Cerrar Sesion"
-  
+  "LOGOUT":"Cerrar Sesion",
+  "EVERYBODY":"Todos",
+  "RECOMMENDED":"Recomendados para tí" ,
+  "NOTHING" :"No se han encontrado proyectos relacionados",
+  "JOIN":"Únete",
+  "OK_PROJECT":"Proyecto creado con éxito :)",
+  "ERROR_PROJECT_CREATE":"No se puedo agregar el proyecto, INTENTA DE NUEVO :(",
+  "JOIN_PROJECT":"Te has unido a un nuevo proyecto :)",
+  "JOIN_PROJECT_ERROR":"Algo salio mal, intenta de nuevo unirte a un proyecto :(",
+  "SEE_MORE":"Ver más"
+
 }

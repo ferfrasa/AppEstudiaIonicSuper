@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, NavController, NavParams, ViewController,ToastController, LoadingController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController,ToastController, LoadingController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -21,7 +21,8 @@ export class CreateProjectPage {
   
   isReadyToSave: boolean;
   form: FormGroup;
-  private signupErrorString: string;
+  private projectErrorString: string;
+  private projetcOkString: string;
   categories: Array<{id: number, name: string}>;
   spectators: Array<{id: number, name: string}>;
   tags: Array<{id: number, name: string}>
@@ -42,8 +43,11 @@ export class CreateProjectPage {
     this.categories = [];
     this.spectators=[];
     this.tags=[];
-    this.translateService.get('SIGNUP_ERROR').subscribe((value) => {
-      this.signupErrorString = value;
+    this.translateService.get('ERROR_PROJECT_CREATE').subscribe((value) => {
+      this.projectErrorString = value;
+    });
+    this.translateService.get('OK_PROJECT').subscribe((value) => {
+      this.projetcOkString = value;
     });
    // Watch the form for changes, and
     this.form.valueChanges.subscribe((v)=>{
@@ -104,22 +108,30 @@ export class CreateProjectPage {
         
         console.log("tags " + data);
         this.loadTags(data);
+        this.authServiceProvider.getDataWithJWT('categories').subscribe(
+          (data) => {
+            //loading.dismiss();
+            console.log("Category " + data);
+            this.loadCategory(data);
+            this.authServiceProvider.getDataWithJWT('spectators').subscribe(
+              (data) => {
+                loading.dismiss();
+                console.log("spectators " + data);
+                this.loadSpectator(data);
+                },err => { console.log(err); }
+            );
+            },err => { console.log(err); }
+        );
       }, err => { console.log(err); })
 
-      this.authServiceProvider.getDataWithJWT('categories').subscribe(
-        (data) => {
-          //loading.dismiss();
-          console.log("Category " + data);
-          this.loadCategory(data);
-          },err => { console.log(err); }
-      );
-      this.authServiceProvider.getDataWithJWT('spectators').subscribe(
+      
+    /*  this.authServiceProvider.getDataWithJWT('spectators').subscribe(
         (data) => {
           loading.dismiss();
           console.log("spectators " + data);
           this.loadSpectator(data);
           },err => { console.log(err); }
-      );
+      );*/
 
    }
 
@@ -130,30 +142,31 @@ export class CreateProjectPage {
     console.log("entro aca545");
     if (!this.form.valid) { return; }
     console.log(JSON.stringify(this.form.value));
-    this.authServiceProvider.postDataJwt(this.form.value,"projects","project")
+
+    this.authServiceProvider.postDataJwt(this.form.value,"projects","project") //ingresa en projects
     .subscribe(
       data => {
-        this.createHasMany(data);
-        let toast = this.toastCtrl.create({
-          message: "Se agrego el proyecto :)",
-          duration: 3000,
-          position: 'top'
-        });
-        toast.present(); 
-        
-        this.viewCtrl.dismiss();
+        // lalma la funcion create hasMany QUE AGREGA A TABLA HAS_PROJECT
+        this.createHasMany(data).subscribe(()=>{
 
+          let toast = this.toastCtrl.create({
+            message: this.projetcOkString,
+            duration: 3000,
+            position: 'top'
+          });
+          toast.present(); 
+        });
+        this.viewCtrl.dismiss();
       },
       err => { console.log(err); 
        // Unable to sign up
-    let toast = this.toastCtrl.create({
-      message: this.signupErrorString,
+      let toast = this.toastCtrl.create({
+      message: this.projectErrorString,
       duration: 3000,
       position: 'top'
     });
     toast.present(); }
     );
-
     
   }
 
@@ -163,32 +176,12 @@ export class CreateProjectPage {
 
   createHasMany(data){
     console.log("es de proyecto  "+ data);
-    let id=localStorage.getItem("token");
-    this.authServiceProvider.getData("user_firebases/"+id)
-    .subscribe(
-      result => {
-        console.log("es un resul "+JSON.stringify(result));
-        let user= JSON.stringify(result['user_id']).toUpperCase().replace(/['"]+/g, '');
-        let proyecto =JSON.stringify(data['id']).toUpperCase().replace(/['"]+/g, '');
-        console.log(user);
-        console.log(proyecto);
-        
-        let dataP = '{"user_id":'+user+', "project_id":'+proyecto+', "rol":true}';
-       this.authServiceProvider.postDataJwt(dataP,"has_user_projects","has_user_project")
-       .subscribe(result =>{
-           console.log(result +"registro")
-        });
-        
-      },
-      err => {
-       console.log(err);
-      }
-    );
-
-       
+    let creador=true;
+    let proyecto =JSON.stringify(data['id']).toUpperCase().replace(/['"]+/g, '');
+    let user= localStorage.getItem("user");
+    let dataP = '{"user_id":'+user+', "project_id":'+proyecto+', "rol":'+creador+'}';
+    return this.authServiceProvider.postDataJwt2(dataP,"has_user_projects","has_user_project");  
   }
-
- 
 }
 
   

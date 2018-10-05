@@ -64,7 +64,12 @@ export class LoginPage {
       this.authServiceProvider.postData2(userData,"user_token")
       .subscribe(data=>{
         console.log(JSON.stringify(data));
-        localStorage.setItem('user',JSON.stringify(data["user"]));
+        localStorage.setItem('user',JSON.stringify(data["user"]["id"]));
+        localStorage.setItem('name',JSON.stringify(data["user"]["name"]));
+        localStorage.setItem('email',JSON.stringify(data["user"]["email"]));
+        localStorage.setItem('user_type',JSON.stringify(data["user"]["user_type_id"]));
+        localStorage.setItem('university',JSON.stringify(data["user"]["university_id"]));
+        localStorage.setItem('status',JSON.stringify(data["user"]["status_user"]));
         localStorage.setItem('jwt',data["jwt"]);
         loading.dismiss();
      
