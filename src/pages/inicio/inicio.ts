@@ -17,9 +17,14 @@ import { Todos, Comerciantes,Profesor, LiderColegio , Estudiante, ComerciantesRo
   templateUrl: 'inicio.html',
 })
 export class InicioPage {
-  projects: Array<{id: number, name: string, description:string, 
-    partic: number, prom:number, spectator:number, category:string}>;
+  projects: Array<{id: number, name: string, description:string, partic: number, prom:number, 
+    spectator:number, category:string, img:string, code:string, status_project:boolean,
+    fecha:string, name_category:string, name_spectator:string }>;  
+    
   projects_user: Array<{id: string}>;
+  images: string[];
+  pet: any;
+  
   private projectJoinErrorString: string;
   private projetcJoinOkString: string;
 
@@ -28,6 +33,8 @@ export class InicioPage {
       public toastCtrl: ToastController,public loadingCtrl: LoadingController) {
     this.projects=[];
     this.projects_user=[];
+    this.images = ['bjork-live.jpg',  'badu-live.png','advance-card-tmntr.jpg'];
+    this.pet = "for_me";
     this.translateService.get('JOIN_PROJECT_ERROR').subscribe((value) => {
       this.projectJoinErrorString = value;
     });
@@ -62,14 +69,21 @@ export class InicioPage {
  
             this.projects.push({
                 id: parseInt(JSON.stringify(data[i]['id'])),
-                name: JSON.stringify(data[i]['name_project']).toUpperCase().replace(/['"]+/g, ''),
-                description: JSON.stringify(data[i]['description_project']).replace(/['"]+/g, ''),
+                name: data[i]['name_project'].toUpperCase(),
+                description: data[i]['description_project'],
                 partic: parseInt(JSON.stringify(data[i]['participantes'])),
                 prom: parseInt(JSON.stringify(data[i]['prom_calif_project'])),
                 spectator: data[i]['spectator_id'],
-                category: data[i]['category_id']
+                category: data[i]['category_id'],
+                img: "assets/img/"+this.images[Math.floor(Math.random() * this.images.length)],
+                code: data[i]['code_project'],
+                status_project: data[i]['status_project'],
+                fecha: data[i]['fecha'], 
+                name_category: data[i]['name_category'], 
+                name_spectator: data[i]['name_spectator']
               //img: this.icons[i]  
             }); 
+            console.log("koko"+data[i]['fecha']);
           }else{
             continue;
           }

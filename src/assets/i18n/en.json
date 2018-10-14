@@ -80,7 +80,28 @@
   "ERROR_PROJECT_CREATE":"The project could not be added, TRY AGAIN :(",
   "JOIN_PROJECT":" You have joined a new project :)",
   "JOIN_PROJECT_ERROR":"Something went wrong, try again to join a project :(",
-  "SEE_MORE":"See More"
+  "SEE_MORE":"See More",
+  "PARTICIPANTS":"Participants",
+  "SCORE": "Score",
+  "TAGS_PROJECT":"Project Tags",
+  "CREATOR_PROJECT":"Created Projects",
+  "PARTICIPANT_PROJECT":"My participations",
+  "PROJECT":"Projects",
+  "PRIVATE_PROJECT":"Private Projects",
+  "CREATE_PRIVATE_PROJECT":"Create Private Project",
+  "MESSAGE_PRIVATE":"This is the code of your private project, use it so your students can access it: ",
+  "CODE_PROJECT": "Project Code",
+  "MESSAGE_JOIN_PRIVATE":"Please enter the project code to join",
+  "MESSAGE_VALIDATION_PRIVATE_PROJECT":"The project code is required",
+  "MESSAGE_NOT_FOUND":"The project with that code was not found"
+
+
+  
+
+
+
+
+  
 
  
   

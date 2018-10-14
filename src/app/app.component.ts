@@ -1,5 +1,4 @@
-
-import { FirstRunPage } from './../pages/index';
+import { FirstRunPage ,ProfesorRol, EstudianteRol, Admin} from './../pages/index';
 import { Component, ViewChild } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -7,8 +6,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform } from 'ionic-angular';
 import { Authentication } from '../service/authentication';
 import { App } from 'ionic-angular';
-
 import { Settings } from '../providers';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -19,20 +18,20 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-   
-    {title: 'Mi Perfil', component: 'PerfilPage'},
+    { title: 'Recomendados para tí', component: 'InicioPage'},
+    { title: 'Mi Perfil', component: 'PerfilPage'},
     { title: 'Mis Proyectos', component: 'ProyectosPage'},
     { title: 'Mis Actividades Cercanas', component: 'ActividadesPage'},
-   /* { title: 'Tabs', component: 'TabsPage' },*/
-    { title: 'Cards', component: 'CardsPage' },
+   /* { title: 'Cards', component: 'CardsPage' },
     { title: 'Content', component: 'ContentPage' },
-   /* { title: 'Login', component: 'LoginPage' },
-    { title: 'Signup', component: 'SignupPage' },*/
     { title: 'Master Detail', component: 'ListMasterPage' },
-    /*{ title: 'Menu', component: 'MenuPage' },*/
-    /*CardsPageModule{ title: 'Settings', component: 'SettingsPage' },*/
-    { title: 'Search', component: 'SearchPage' },
-    {title: 'jh', component: 'InicioPage'}
+    { title: 'Search', component: 'SearchPage' }*/
+  ]
+
+  pagesProfe: any[] = [
+   
+    { title: 'Proyectos Privados', component: 'ProjectPrivatePage'}
+   
    
   ]
 
@@ -95,6 +94,16 @@ export class MyApp {
       this.auth.logOut(); 
      
       this.nav.setRoot('WelcomePage');
+  }
+
+  findRol(){
+    if(localStorage.getItem("user_type") == ProfesorRol ||
+       localStorage.getItem("user_type")== EstudianteRol || 
+       localStorage.getItem("user_type") == Admin){
+       return true;
+    }else{
+      return false;
+    }
   }
     
    

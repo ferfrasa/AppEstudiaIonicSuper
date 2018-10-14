@@ -45,7 +45,9 @@
             <ion-item >
               <ion-label>{{'CATEGORY' | translate}}</ion-label>
               <ion-select formControlName="category_id">
-                <ion-option  *ngFor="let item of categories" [value]="item.id">{{item.name}}</ion-option>
+                <div *ngFor="let item of categories">
+                <ion-option  *ngIf="(item.id!=9)" [value]="item.id">{{item.name}}</ion-option>
+              </div>
               </ion-select>
            
             </ion-item>
@@ -72,8 +74,6 @@
               </ion-list>
       </ion-list>
     </form>
-
-    <button ion-button (click)="goBack()"></button>
   </ion-content>
 
    

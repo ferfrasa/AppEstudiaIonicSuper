@@ -56,8 +56,8 @@ export class SignupPage {
     })
   }
 
-  doSignup2() {
-    this.authServiceProvider.postData(this.account, "users")
+  doSignup2(loading) {
+    return this.authServiceProvider.postData(this.account, "users")
     .subscribe(
       data => {
         let userData={
@@ -66,7 +66,7 @@ export class SignupPage {
             password:this.account.password
           }
         }
-        this.authServiceProvider.postData2(userData,"user_token")
+        return this.authServiceProvider.postData2(userData,"user_token")
         .subscribe(data=>{
           console.log(JSON.stringify(data));
           localStorage.setItem('user',JSON.stringify(data["user"]["id"]));
@@ -76,13 +76,12 @@ export class SignupPage {
           localStorage.setItem('university',JSON.stringify(data["user"]["university_id"]));
           localStorage.setItem('status',JSON.stringify(data["user"]["status_user"]));
           localStorage.setItem('jwt',data["jwt"]);
+          loading.dismiss();
          this.navCtrl.push(MainPage);
-
         })
-         this.navCtrl.push(MainPage)
-
       },
       err => { console.log(err); 
+        loading.dismiss();
        // Unable to sign up
       let toast = this.toastCtrl.create({
       message: this.signupErrorString,
@@ -101,23 +100,20 @@ export class SignupPage {
 
     this.auth.createUserWithEmailAndPassword(this.account.email, this.account.password)
     .then(result => {
-      loading.dismiss(); 
-     
-      if (result){
-        
         console.log(this.auth.getUser()); 
         this.account.id_firebase=this.auth.getUser()[0]; 
         this.account.email=this.auth.getUser()[2];
         this.account.user_type_id =this.objetoRol['id'];
         console.log(this.account);
-        this.doSignup2();
+        this.doSignup2(loading);
+        //loading.dismiss(); 
           // this.navCtrl.push('CardsPage');
-      };
+      
     }).catch(error => {
         loading.dismiss();
         console.log(error);
         this.alert('Error', 'Ha ocurrido un error inesperado. Por favor intente nuevamente.');
-        });
+      });
    }
         // return this.auth.createUserWithGoogle();
 
@@ -144,12 +140,7 @@ export class SignupPage {
       });
       alert.present();
   }
-
-
   buildForm() {
-    /**
-     * @description Asignamos a la propiedad "formularioUsuario" los campos que se van a controlar de la vista
-     */
     this.formularioUsuario = this.fb.group({
       name:['',[Validators.required,Validators.maxLength(30)]],
       password:['',[Validators.required,Validators.minLength(5),Validators.maxLength(100)]],

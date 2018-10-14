@@ -9,10 +9,14 @@
           <ion-list>
             <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
               {{p.title}}
-            </button >
+            </button>
+            <div *ngIf="(findRol())">
+            <button menuClose ion-item *ngFor="let p of pagesProfe" (click)="openPage(p)">
+               {{p.title}}
+            </button>
+          </div>
             <button ion-item *ngIf="isThereASession()" (click)="logOut()">
-                 <!-- {{ 'LOGOUT' | translate }}  -->
-            Cerrar sesión
+                  {{ 'LOGOUT' | translate }}
             </button>
           </ion-list>
         </ion-content>

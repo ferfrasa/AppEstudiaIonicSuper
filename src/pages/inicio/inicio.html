@@ -32,14 +32,17 @@
    
   </ion-header>
 
-
+ 
+  
 
 <ion-content padding>
+   
+
   <div [ngSwitch]="pet">
    <div *ngSwitchCase="'everybody'">
      <div *ngFor= "let item of projects">
      <ion-card  *ngIf="(item.spectator == findTodos())">
-    <img src="assets/img/bjork-live.jpg"/>
+    <img src="{{item.img}}"/>
     <ion-card-content>
       <ion-card-title>
         {{item.name}}
@@ -87,11 +90,11 @@
 
    <div *ngSwitchCase="'for_me'">
       <div *ngFor= "let item of projects">
-      <ion-card *ngIf="(item.spectator == findRol())">
-     <img src="assets/img/bjork-live.jpg"/>
+      <ion-card *ngIf="(item.spectator == findRol() && item.category !=9)">
+     <img src="{{item.img}}"/>
      <ion-card-content>
        <ion-card-title>
-         {{item.id}}
+         {{item.name}}
        </ion-card-title>
        <p>
        {{item.description}}
@@ -138,6 +141,7 @@
     <ion-title *ngIf="(projects.length == 0)">{{ 'NOTHING' | translate }}</ion-title>
    
 </div>
+
 <ion-item>
   <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
     {{p.title}}

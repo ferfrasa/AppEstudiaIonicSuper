@@ -8,11 +8,75 @@
 
 
 <ion-content>
-  <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
+ <!-- <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">-->
+    <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.img + ')'">
   </div>
 
   <div class="item-detail" padding>
-    <h2>{{item.name}}</h2>
+    <h2>{{item.name}}</h2> <ion-note>
+     {{item.fecha}}
+    </ion-note>
     <p>{{item.description}}</p>
+    <ion-item>
+      
+      <ion-icon name="contacts" item-start style="color: #d03e84"></ion-icon>
+      {{ 'PARTICIPANTS'| translate }}
+      <ion-badge item-end>{{item.partic}}</ion-badge>
+    </ion-item>
+  
+    <ion-item>
+        <ion-icon name="star" item-start style="color: #55acee"></ion-icon>
+     
+      {{ 'SCORE' | translate }}
+      <ion-badge item-end>{{item.prom}}</ion-badge>
+    </ion-item>
+    <ion-item>
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-start clear small>
+            <ion-icon ios="ios-browsers" md="md-browsers"></ion-icon>
+            <div>{{item.name_category}}</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon ios="ios-globe" md="md-globe"></ion-icon>
+            <div>{{item.name_spectator}}</div>
+          </button>
+        </ion-col>
+        <ion-col center text-center>
+          
+        </ion-col>
+      </ion-row>
+
+    </ion-item>
+    
+      <ion-grid class="tags">
+        <ion-label>{{ 'TAGS_PROJECT'| translate }}</ion-label>
+          <ion-row >
+            <ion-col *ngFor= "let tag of projects_tags">
+              <div [ngStyle]="{'background-color': tag.color}">{{tag.nombre}}</div>
+            </ion-col>
+            
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div>1 of 3</div>
+            </ion-col>
+            <ion-col>
+              <div>2 of 3</div>
+            </ion-col>
+            <ion-col>
+              <div>3 of 3</div>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
   </div>
+
+  <ion-fab right bottom>                      
+      <button ion-fab color="primary" (click)="joinProject($event, item)"> <ion-icon ios="ios-hand" md="md-hand"></ion-icon></button> 
+    </ion-fab>
+
 </ion-content>
+
+

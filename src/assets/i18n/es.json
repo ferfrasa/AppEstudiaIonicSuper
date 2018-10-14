@@ -8,7 +8,7 @@
   "TAB1_TITLE": "Items",
   "TAB2_TITLE": "Buscar",
   "TAB3_TITLE": "Ajustes",
-
+  "CANCEL_BUTTON": "Cancelar",
   "MAP_TITLE": "Mapa",
 
   "TUTORIAL_SLIDE1_TITLE": "Bienvenido/a al Ionic Super Starter",
@@ -60,6 +60,19 @@
   "ERROR_PROJECT_CREATE":"No se puedo agregar el proyecto, INTENTA DE NUEVO :(",
   "JOIN_PROJECT":"Te has unido a un nuevo proyecto :)",
   "JOIN_PROJECT_ERROR":"Algo salio mal, intenta de nuevo unirte a un proyecto :(",
-  "SEE_MORE":"Ver más"
+  "SEE_MORE":"Ver más",
+  "PARTICIPANTS":"Participantes",
+  "SCORE": "Puntaje",
+  "TAGS_PROJECT":"Tags del proyecto",
+  "CREATOR_PROJECT":"Proyectos Creados",
+  "PARTICIPANT_PROJECT":"Mis participaciones",
+  "PROJECT":"Proyectos",
+  "PRIVATE_PROJECT":"Proyectos Privados",
+  "CREATE_PRIVATE_PROJECT":"Crear Proyecto Privado",
+  "MESSAGE_PRIVATE":"Este es el código de tu proyecto privado, utilizalo para que tus estudiantes puedan acceder a él: ",
+  "CODE_PROJECT": "Código del proyecto",
+  "MESSAGE_JOIN_PRIVATE":"Ingresa por favor el código del proyecto para unirte",
+  "MESSAGE_VALIDATION_PRIVATE_PROJECT":"El código del proyecto es requerido",
+  "MESSAGE_NOT_FOUND":"No se encontró el proyecto con ese código"
 
 }
