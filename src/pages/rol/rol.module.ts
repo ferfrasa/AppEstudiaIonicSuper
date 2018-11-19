@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
+import { TranslateModule } from '@ngx-translate/core';
+
 import { RolPage } from './rol';
 
 @NgModule({
@@ -8,6 +10,7 @@ import { RolPage } from './rol';
   ],
   imports: [
     IonicPageModule.forChild(RolPage),
+    TranslateModule.forChild()
   ],
 })
 export class RolPageModule {}

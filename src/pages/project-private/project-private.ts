@@ -17,7 +17,8 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: 'project-private.html',
 })
 export class ProjectPrivatePage {
-  projects_create: Array<{id: number, name: string, description:string, partic: number, prom:number, img:string, code:string}>;
+  projects_create: Array<{id: number, name: string, description:string, partic: number, prom:number, img:string, code:string, status_project:boolean,
+    fecha:string, category:string, spectator:string}>;
   images: string[];
   
   
@@ -32,8 +33,8 @@ export class ProjectPrivatePage {
 
   
   private_project: Array<{id: number, name: string, description:string, partic: number, prom:number, 
-  spectator:number, category:string, img:string, code:string, status_project:boolean,
-  fecha:string, name_category:string, name_spectator:string} >;
+   img:string, code:string, status_project:boolean,
+  fecha:string, category:string, spectator:string} >;
     
 
  
@@ -42,7 +43,16 @@ export class ProjectPrivatePage {
     public modalController: ModalController,public authServiceProvider: AuthServiceProvider,
     public  translateService:TranslateService,public toastCtrl: ToastController) {
     this.projects_create=[]; 
-    this.images = ['bear.jpg',  'duck.jpg','eagle.jpg'];
+    this.images = ['a.jpg','b.jpg','c.jpg','d.jpg'
+    ,'e.jpg','f.jpg','g.jpg','h.jpg','i.jpg','j.jpg','k.jpg','l.jpg','m.jpg','n.jpg','o.jpg','p.jpg',
+    'q.jpg','r.jpg','s.jpg','t.jpg','u.jpg','v.jpg','w.jpg','x.jpg','y.jpg','z.jpg','15.jpg','16.jpg','17.jpg','18.jpg',
+    '19.jpg','20.jpg','21.jpg','22.jpg','23.jpg','24.jpg','25.jpg','26.jpg','27.jpg','28.jpg','29.jpg',
+    '30.jpg','31.jpg','32.jpg','33.jpg','34.jpg','35.jpg','36.jpg','37.jpg','38.jpg','39.jpg',
+    '40.jpg', '41.jpg', '42.jpg', '43.jpg', '44.jpg', '45.jpg', '46.jpg', '47.jpg', '48.jpg', '49.jpg',
+    '50.jpg','51.jpg','52.jpg','53.jpg','54.jpg','55.jpg','56.jpg','57.jpg','5.8jpg','59.jpg',
+    '60.jpg', '61.jpg', '62.jpg', '63.jpg', '64.jpg', '65.jpg', '66.jpg', '67.jpg', '68.jpg', '69.jpg',
+    '70.jpg', '71.jpg', '72.jpg', '73.jpg', '74.jpg', '75.jpg', '76.jpg',];
+    
     this.private_project=[];
    
     this.translateService.get('CODE_PROJECT').subscribe((value) => {
@@ -116,7 +126,14 @@ export class ProjectPrivatePage {
      //partic: parseInt(JSON.stringify(data[i]['participantes'])),
      prom: parseInt(JSON.stringify(data[posicion]['prom_calif_project'])),
      img: "assets/img/"+this.images[Math.floor(Math.random() * this.images.length)],
-     code: data[posicion]['code_project']
+     code: data[posicion]['code_project'],
+     
+     
+     status_project: data[posicion]['status_project'],
+     
+     category:JSON.stringify(data[posicion]['name_category']).toUpperCase().replace(/['"]+/g, ''),
+     spectator:JSON.stringify(data[posicion]['name_spectator']).toUpperCase().replace(/['"]+/g, ''),
+     fecha:JSON.stringify(data[posicion]['fecha']).toUpperCase().replace(/['"]+/g, ''),
   
        
     });
@@ -189,18 +206,25 @@ export class ProjectPrivatePage {
         description: data[i]['description_project'],
         partic: parseInt(JSON.stringify(data[i]['participantes'])),
         prom: parseInt(JSON.stringify(data[i]['prom_calif_project'])),
-        spectator: data[i]['spectator_id'],
-        category: data[i]['category_id'],
+        //spectator: data[i]['spectator_id'],
+        //category: data[i]['category_id'],
         img: "assets/img/"+this.images[Math.floor(Math.random() * this.images.length)],
         code: data[i]['code_project'],
         status_project: data[i]['status_project'],
-        fecha: data[i]['fecha'], 
-        name_category: data[i]['name_category'], 
-        name_spectator: data[i]['name_spectator']
+        
+        category:JSON.stringify(data[i]['name_category']).toUpperCase().replace(/['"]+/g, ''),
+        spectator:JSON.stringify(data[i]['name_spectator']).toUpperCase().replace(/['"]+/g, ''),
+        fecha:JSON.stringify(data[i]['fecha']).toUpperCase().replace(/['"]+/g, ''),
+
+
+        /*fecha: data[i]['fecha'], 
+        category: data[i]['name_category'], 
+        spectator: data[i]['name_spectator']
        /* id: parseInt(JSON.stringify(data[i]['id'])),
         name: data[i]['name_project'].toUpperCase(),
         code: data[i]['code_project'],   */
-        });         
+        });  
+        console.log("privte", this.private_project)       
         }
       }
     
@@ -249,6 +273,13 @@ export class ProjectPrivatePage {
         
       });
   }*/
+
+  viewProject(event,item){
+    console.log("itt",item)
+    this.navCtrl.push('MyProjectDetailPage', {
+      item: item
+    });
+  }
 }
   
 

@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-    <ion-navbar>
+    <ion-navbar color="primary">
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
           </button>
@@ -29,29 +29,29 @@
           </ion-card-content>
       
           <ion-item>
-            <button ion-button clear item-start>Like</button>
-            <button ion-button clear item-end>Comment</button>
+            <button ion-button clear item-start></button>
+            <button ion-button clear item-end></button>
           </ion-item>
         </ion-card>
       
         <ion-list>
           <ion-item>
-            Inner Button
-            <button ion-button item-end outline>Outline</button>
+           {{nombre}}
+            <button ion-button item-end outline>Nombre</button>
           </ion-item>
       
           <ion-item>
-            Left Icon Button
+            {{email}}
             <button ion-button item-end outline icon-start>
               <ion-icon name='star'></ion-icon>
-              Left Icon
+              Correo
             </button>
           </ion-item>
       
-          <ion-item>
-            Right Icon Button
+         <ion-item>
+            {{rol}}
             <button ion-button item-end outline icon-end>
-              Right Icon
+             Usuario
               <ion-icon name='star'></ion-icon>
             </button>
           </ion-item>

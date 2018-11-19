@@ -1,3 +1,4 @@
+import { LiderColegio } from './../index';
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, MenuController,NavController, ToastController, NavParams, LoadingController, AlertController } from 'ionic-angular';
@@ -15,6 +16,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class SignupPage {
    //datos de la cuenta
+  
   account:{ id_firebase: string,
     name: string, email: string,  password:string,password_confirmation:string,  
     user_type_id: number}={
@@ -25,6 +27,8 @@ export class SignupPage {
     password_confirmation:  "",
     user_type_id: 0
    } ;
+
+  
 
   //objeto rol recibido de pagina de rol
    objetoRol: any;
@@ -54,6 +58,8 @@ export class SignupPage {
       this.translateService.get('SIGNUP_ERROR').subscribe((value) => {
       this.signupErrorString = value;
     })
+
+  
   }
 
   doSignup2(loading) {
@@ -112,7 +118,16 @@ export class SignupPage {
     }).catch(error => {
         loading.dismiss();
         console.log(error);
-        this.alert('Error', 'Ha ocurrido un error inesperado. Por favor intente nuevamente.');
+        /*code: "auth/network-request-failed"
+        code: "auth/email-already-in-use"code: 
+        "auth/email-already-in-use"
+
+        auth/invalid-email
+        message: "A network error (such as timeout, interr*/
+
+
+
+        this.alert('Error', error);
       });
    }
         // return this.auth.createUserWithGoogle();

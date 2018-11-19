@@ -18,7 +18,9 @@ export class WelcomePage {
   constructor(public navCtrl: NavController, public menu:MenuController) { }
   
   ionViewDidLoad(){
+    //this.navCtrl.setRoot(this.navCtrl.getActive().component);
     this.menu.enable(false);
+   
   }
   ionViewWillLeave() {
     // enable the root left menu when leaving the tutorial page

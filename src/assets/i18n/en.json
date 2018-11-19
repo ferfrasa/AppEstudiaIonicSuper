@@ -11,24 +11,23 @@
   "TAB1_TITLE": "Items",
   "TAB2_TITLE": "Search",
   "TAB3_TITLE": "Settings",
-
   "MAP_TITLE": "Map",
 
   "TUTORIAL_SKIP_BUTTON": "Skip",
   "TUTORIAL_CONTINUE_BUTTON": "Continue",
 
-  "TUTORIAL_SLIDE1_TITLE": "Welcome to the Ionic Super Starter",
-  "TUTORIAL_SLIDE1_DESCRIPTION": "The <b>Ionic Super Starter</b> is a fully-featured Ionic starter with many pre-built pages and best practices.",
+  "TUTORIAL_SLIDE1_TITLE": "What is Estudiapp?",
+  "TUTORIAL_SLIDE1_DESCRIPTION": " <b>Estudiapp</b> It is the space, where college students, university students, merchants can join to contribute to their personal development",
 
-  "TUTORIAL_SLIDE2_TITLE": "How to use the Super Starter",
-  "TUTORIAL_SLIDE2_DESCRIPTION": "Assemble the various page types you want and remove the ones you don't. We've provided many common mobile app page layouts, like login and signup pages, tabs, and this tutorial page.",
+  "TUTORIAL_SLIDE2_TITLE": "Are you a university student?",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "It is the space, where college students, university students, merchants can join to contribute to their personal development",
 
-  "TUTORIAL_SLIDE3_TITLE": "Getting Started",
-  "TUTORIAL_SLIDE3_DESCRIPTION": "Need help? Check out the Super Starter README for a full tutorial",
+  "TUTORIAL_SLIDE3_TITLE": "Entrepreneur",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "In this space you can get great resources to promote your business (company)",
 
-  "TUTORIAL_SLIDE4_TITLE": "Ready to Play?",
+  "TUTORIAL_SLIDE4_TITLE": "Ready to  Estudiapp?",
 
-  "WELCOME_INTRO": "The starting point for your next great Ionic app",
+  "WELCOME_INTRO": "You can contribute to your community while giving tutorials to students of coloegio or trainings to the merchants of your community",
 
   "SETTINGS_TITLE": "Settings",
   "SETTINGS_OPTION1": "Option 1",
@@ -93,7 +92,63 @@
   "CODE_PROJECT": "Project Code",
   "MESSAGE_JOIN_PRIVATE":"Please enter the project code to join",
   "MESSAGE_VALIDATION_PRIVATE_PROJECT":"The project code is required",
-  "MESSAGE_NOT_FOUND":"The project with that code was not found"
+  "MESSAGE_NOT_FOUND":"The project with that code was not found",
+  "CREATE_ACTIVITY":"Create activity",
+  "LIST-PROJECT":"List of your projects",
+  "SELECT_PROJECT":"Select a project from the list to create an activity",
+  "NAME_ACTIVITY":"Name activity",
+  "DESCRIPTION_ACTIVITY":"Description activity",
+  "DATE_ACTIVITY":"Date activity",
+  "PLACE_ACTIVITY":"Place activity",
+  "TYPE_ACTIVITY":"Type activity",
+  "WHO_ROL":"Who you are?",
+  "SELECT_ROL":"Select your role in the application",
+  "WELCOME_RECOM":"Welcome to EstudiaAPP",
+  "ACTIVITY":"Activities" ,
+  "LIST_CREATE_PROJECT":"This is the list of your created projects",
+   "ERROR_ACTIVITY_CREATE":"The activity could not be added, TRY AGAIN :(",
+   "OK_ACTIVITY":"Activity created successfully :)",
+   "SEC_PROJECT":"Select project",
+   "TEXT_FIL_ACTIVITY":"Here you can find recent activities",
+   "SCORE_CAL":"Tú apreciación",
+   "RATE_PROJECT":"Rate this project",
+   "DESCRIPTION_PRIVATE":"A private project can only be accessed by university", 
+  
+  "DESCRIPTION_PRIVATE_2":"students who have the same code",
+   "TEXT_PRIVATE":"Fill the fields below to create one",
+   "RATE": "Give your appreciation of this activity",
+   "COMENTARIO":"Comment",
+   "REMEMBER_PASS":"Remember password",
+   "PROJECT_MEN_OK_CREATE":"This is the list of the projects you have created",
+   "PROJECT_MEN_OK_JOIN":"This is the list of projects that you have joined",
+   "PROJECT_MEN_BAD_JOIN":"You have not joined any project",
+   "PROJECT_MEN_BAD_CREATE":"You have not created any project",
+   "DATE":"Date",
+   "EDIT":"Edit",
+   "EDIT_PROJECT":"Edit project",
+   "EDIT_PROJECT_OK":"The project has been modified :)",
+   "EDIT_PROJECT_ERROR":"The project could not be updated :(",
+   "COMMENT_ACTIVITY":"Comments of the activity",
+    "ABOUT": "Frequently Asked Questions",
+    "ABOUT_1": "It is a space where university-university students, universities of the region, merchants and the local government can join, to contribute with the development of their goals together with the social growth of their community.",
+    "ABOUT_2": "How about earning credits and note while helping your community?",
+    "ABOUT_3": "It is already possible, with Estudiaap you can:",
+    "ABOUT_4": "Teach tutoring to help college students, traders for the",
+    "ABOUT_5": "economic development while earning a class note within your university with each contribution",
+    "ABOUT_6": "Enjoy Estudpp",
+    "ABOUT_7": "Are you a merchant?",
+    "ABOUT_8": "Just sign up for our app, and select the training you need, for example we have a training on the advantages of formalizing you, or how to grow your income.",
+    "ABOUT_9": "Student at school?",
+    "ABOUT_10": "You have problems with math or some other subject, we help you.",
+    "ABOUT_11": "You and your classmates can attend tutorials endorsed by the best universities, where you can improve your academic performance and have better grades in your school",
+    "ABOUT_12": "Are you a group leader of college students?",
+    "ABOUT_13": "Do you want your group of students to have a better result in your subject?",
+    "ABOUT_14": "Manage tutorials given by the best universities, with didactic classes and reinforcement in your subject or extracurricular activities will lead your school to success."
+      
+
+
+
+
 
 
   

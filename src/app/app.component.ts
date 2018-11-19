@@ -22,9 +22,10 @@ export class MyApp {
     { title: 'Mi Perfil', component: 'PerfilPage'},
     { title: 'Mis Proyectos', component: 'ProyectosPage'},
     { title: 'Mis Actividades Cercanas', component: 'ActividadesPage'},
-   /* { title: 'Cards', component: 'CardsPage' },
-    { title: 'Content', component: 'ContentPage' },
+    { title: 'Preguntas frecuentes', component: 'AboutPage' },
+   /* { title: 'Content', component: 'ContentPage' },
     { title: 'Master Detail', component: 'ListMasterPage' },
+     { title: 'Mi Perfil', component: 'PerfilPage'},
     { title: 'Search', component: 'SearchPage' }*/
   ]
 
@@ -47,7 +48,9 @@ export class MyApp {
       this.splashScreen.hide();
     });
     this.initTranslate();
-    localStorage.setItem("apiUrl","http://localhost:3000/api/v1/")
+  //  localStorage.setItem("apiUrl","http://localhost:3000/api/v1/")
+    localStorage.setItem("apiUrl","http://184.73.125.205:3000/api/v1/")
+    //localStorage.setItem("apiUrl","https://nameless-fortress-44774.herokuapp.com/api/v1/")
 
   }
 

@@ -18,6 +18,9 @@ import { AngularFireModule } from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import { Authentication } from '../service/authentication';
+import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
+import { Geolocation } from '@ionic-native/geolocation';
+
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -77,7 +80,10 @@ export function provideSettings(storage: Storage) {
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthServiceProvider,
-    Authentication
+    Authentication,
+    GoogleMapsProvider,
+    Geolocation
+
   ]
 })
 export class AppModule { }

@@ -20,7 +20,7 @@ export class ItemDetailPage {
   constructor(public navCtrl: NavController, navParams: NavParams, items: Items, 
     public authServiceProvider: AuthServiceProvider,public translateService: TranslateService,
     public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
-    this.item = navParams.get('item') || items.defaultItem;
+    this.item = navParams.get('item')||-1;
     this.projects_tags=[];
 
     this.translateService.get('JOIN_PROJECT_ERROR').subscribe((value) => {
@@ -29,6 +29,12 @@ export class ItemDetailPage {
     this.translateService.get('JOIN_PROJECT').subscribe((value) => {
       this.projetcJoinOkString = value;
     });
+
+    if(this.item==-1){
+      this.navCtrl.push('InicioPage');
+    }
+      
+    
   }
   ionViewDidLoad() {
    

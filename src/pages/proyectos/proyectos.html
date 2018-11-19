@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-    <ion-navbar>
+    <ion-navbar color="primary">
       <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
       </button>
@@ -20,9 +20,9 @@
     </ion-navbar> 
     <ion-toolbar>
       <ion-buttons end>
-        <button  ion-button icon-only #button2 (click)="buttonClick(button2)">
+        <!--<button  ion-button icon-only #button2 (click)="buttonClick(button2)">
           <ion-icon name="search"></ion-icon>
-        </button>
+        </button>-->
       </ion-buttons>
       <ion-segment [(ngModel)]="pet">
         
@@ -38,7 +38,7 @@
   </ion-header>
  
   <ion-content padding> 
-      <ion-row >
+      <!--<ion-row >
         <ion-col>
           <ion-item >
             <ion-label>{{'CATEGORY' | translate}}</ion-label>
@@ -50,12 +50,14 @@
           </ion-item>
         </ion-col>
        
-      </ion-row>
+      </ion-row>-->
 
      
       <div [ngSwitch]="pet">
         <div *ngSwitchCase="'creator'">
-            <ion-label>Ésta es la lista de tus proyectos creados</ion-label>
+           
+            <ion-title *ngIf="(projects_create.length == 0)">{{ 'PROJECT_MEN_BAD_CREATE' | translate }}</ion-title>
+            <ion-title *ngIf="(projects_create.length != 0)">{{ 'PROJECT_MEN_OK_CREATE' | translate }}</ion-title>
             <ion-list>
                 <ion-item *ngFor= "let item of projects_create">
                   <ion-thumbnail item-start>
@@ -63,14 +65,16 @@
                   </ion-thumbnail>
                   <h2> {{item.name}}</h2>
                   <p>{{item.description}}</p>
-                  <p>{{item.prom}}</p>
+                  <p>{{item.category}}</p>
                   <button ion-button clear item-end (click)="viewProject($event, item)"> {{'SEE_MORE'| translate }}</button>
+                  <button ion-button clear item-end (click)=" editProject($event, item)"> {{'EDIT'| translate }}</button>
+
                 </ion-item>
-              </ion-list>
+            </ion-list>
         </div>
         <div *ngSwitchCase="'participant'">
-            <ion-label>Ésta es la lista a los proyectos que te has unido</ion-label>
-            
+            <ion-label *ngIf="(projects_join.length != 0)">{{ 'PROJECT_MEN_OK_JOIN' | translate }}</ion-label>
+            <ion-title *ngIf="(projects_join.length == 0)">{{ 'PROJECT_MEN_BAD_JOIN' | translate }}</ion-title>
             <ion-list>
                 <ion-item *ngFor= "let item of projects_join">
                   <ion-thumbnail item-start>
@@ -78,8 +82,9 @@
                   </ion-thumbnail>
                   <h2> {{item.name}}</h2>
                   <p>{{item.description}}</p>
-                  <p>{{item.prom}}</p>
+                  <p>{{item.category}}</p>
                   <button ion-button clear item-end (click)="viewProject($event, item)"> {{'SEE_MORE'| translate }}</button>
+                
                 </ion-item>
               </ion-list>
           </div>

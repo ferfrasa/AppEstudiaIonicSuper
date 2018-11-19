@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>{{ 'LOGIN_TITLE' | translate }}</ion-title>
   </ion-navbar>
 
@@ -26,9 +26,14 @@
       <div padding>
         <button [disabled]="!credentials.valid" ion-button color="primary" block>{{ 'LOGIN_BUTTON' | translate }}</button>
       </div>
-
     </ion-list>
   </form>
+  
+  <button ion-button icon-start clear item-end (click)="recordar()">
+    <ion-icon name="navigate"></ion-icon>
+    {{ 'REMEMBER_PASS' | translate }}
+   
+</button>
 </ion-content>
 
 

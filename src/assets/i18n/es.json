@@ -1,4 +1,6 @@
 {
+  "BACK_BUTTON_TEXT":"Atras",
+
   "NAME": "Nombre",
   "PASSWORD": "Contraseña",
   "EMAIL": "Email",
@@ -11,14 +13,19 @@
   "CANCEL_BUTTON": "Cancelar",
   "MAP_TITLE": "Mapa",
 
-  "TUTORIAL_SLIDE1_TITLE": "Bienvenido/a al Ionic Super Starter",
-  "TUTORIAL_SLIDE1_DESCRIPTION": "El <b>Ionic Super Starter</b> es un starter de Ionic completo con muchas páginas preconstruidas y mejores prácticas.",
+  "TUTORIAL_SKIP_BUTTON":"Quitar",
+  "TUTORIAL_CONTINUE_BUTTON":"Continuar",
 
-  "TUTORIAL_SLIDE2_TITLE": "Cómo usar el Super Starter",
-  "TUTORIAL_SLIDE2_DESCRIPTION": "Monta los varios tipos de página que quieras y quita los que no. Hemos incluido muchas estructuras de página comunes en apps móviles, como páginas de inicio de sesión y registro, pestañas, y esta página de tutorial.",
+  "TUTORIAL_SLIDE1_TITLE": "¿Qué es Estudiapp?",
+  "TUTORIAL_SLIDE1_DESCRIPTION": " <b>Estudiapp</b> Es el espacio, donde estudiantes de colegio, universitarios, comerciantes pueden unirse para contribuir a su desarrollo personal ",
+  
+  "TUTORIAL_SLIDE2_TITLE": "¿Eres Universitario?",
+  "TUTORIAL_SLIDE2_DESCRIPTION": " <b>Estudiapp</b> Es el espacio, donde estudiantes de colegio, universitarios, comerciantes pueden unirse para contribuir a su desarrollo personal ",
 
-  "TUTORIAL_SLIDE3_TITLE": "Empezando",
-  "TUTORIAL_SLIDE3_DESCRIPTION": "¿Necesitas ayuda? Échale un vistazo al README del Super Starter para ver el tutorial completo.",
+  "TUTORIAL_SLIDE3_TITLE": "Comerciante",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "En este espacio puedes conseguir grandes recursos para fomentar su negocio ( empresa)",
+  
+  "TUTORIAL_SLIDE4_TITLE": "¿Listo para Estudiapp?",
 
   "SETTINGS_TITLE": "Ajustes",
   "SETTINGS_OPTION1": "Opción 1",
@@ -36,6 +43,8 @@
   "SIGNUP_TITLE": "Registro",
   "SIGNUP_ERROR": "No se ha podido crear la cuenta. Por favor revisa la información de la cuenta e inténtalo de nuevo.",
   "SIGNUP_BUTTON": "Registrarse",
+  "WELCOME_INTRO": "Puedes contribuir a tu cominudad mientras das tutorias a estudiantes de coloegio o entrenamientos a los comerciantes de tu comunidad",
+
 
   "LIST_MASTER_TITLE": "Items",
 
@@ -73,6 +82,65 @@
   "CODE_PROJECT": "Código del proyecto",
   "MESSAGE_JOIN_PRIVATE":"Ingresa por favor el código del proyecto para unirte",
   "MESSAGE_VALIDATION_PRIVATE_PROJECT":"El código del proyecto es requerido",
-  "MESSAGE_NOT_FOUND":"No se encontró el proyecto con ese código"
+  "MESSAGE_NOT_FOUND":"No se encontró el proyecto con ese código",
+  "CREATE_ACTIVITY":"Crear nueva actividad",
+  "LIST-PROJECT":"Lista de tus proyetos",
+  "SELECT_PROJECT":"Selecciona un proyecto de la lista para crear una actividad",
+  "NAME_ACTIVITY":"Nombre actividad",
+  "DESCRIPTION_ACTIVITY":"Descripción de actividad",
+  "DATE_ACTIVITY":"Fecha actividad",
+  "PLACE_ACTIVITY":"Lugar de actividad",
+  "TYPE_ACTIVITY":"Tipo de actividad",
+  "WHO_ROL":"¿Quién eres?",
+  "SELECT_ROL":"Selecciona tu rol en la aplicación",
+  "WELCOME_RECOM":"Bienvenido a EstudiaAPP",
+  "ACTIVITY":"Actividades",
+  "LIST_CREATE_PROJECT":"Ésta es la lista de tus proyectos creados",
+  "ERROR_ACTIVITY_CREATE":"No se puedo agregar la actividad, INTENTA DE NUEVO :(",
+  "OK_ACTIVITY":"Actividad creada con éxito :)",
+  "SEC_PROJECT":"Seleccione proyecto",
+  "TEXT_FIL_ACTIVITY":"Acá puedes encontrar actividades recientes a los proyectos que perteneces",
+  "SCORE_CAL":"Tú apreciación",
+  "RATE_PROJECT":"Califica este proyecto",
+  "DESCRIPTION_PRIVATE":"A un proyecto privado solo podran acceder los estudiantes ",
+  "DESCRIPTION_PRIVATE_2":"universitarios que tengan el codigo del mismo",
+  "TEXT_PRIVATE":"Llena los campos a continuación para crear uno",
+  "RATE":"Da tu apreciación de esta actividad",
+  "COMENTARIO":"Comentario",
+  "REMEMBER_PASS":"Recordar Contraseña",
+   "PROJECT_MEN_OK_CREATE":"Ésta es la lista a los proyectos que has creado",
+   "PROJECT_MEN_OK_JOIN":"Ésta es la lista a los proyectos que te has unido",
+   "PROJECT_MEN_BAD_JOIN":"No te has unido a ningun proyecto",
+   "PROJECT_MEN_BAD_CREATE":"No has creado ningun proyecto",
+   "DATE":"Fecha",
+   "EDIT":"Editar",
+   "EDIT_PROJECT":"Editar proyecto",
+   "EDIT_PROJECT_OK":"El proyecto ha sido modificado :)",
+   "EDIT_PROJECT_ERROR":"No se pudo actualizar el proyecto :(",
+   "COMMENT_ACTIVITY":"Comentarios de la actividad",
+   "ABOUT":"Preguntas Frecuentes",
+   "ABOUT_1":"Es un espacio donde los estudiantes de colegio-universidad, universidades de la región, comerciantes y el gobierno local pueden unirse; para contribuir con el desarrollo de sus metas unido al crecimiento social  de su comunidad.",
+   "ABOUT_2":"¿Qué tal ganar créditos y nota mientras ayudas a tu comunidad?",
+   "ABOUT_3":" Ya es posible, con Estudiaap puedes:",
+   "ABOUT_4":"Impartir tutorías para ayudar a los estudiantes de colegio,comerciantes para el",
+   "ABOUT_5":"desarrollo económico mientras ganar nota  de clase  dentro de tu universidad con cada contribución",
+   "ABOUT_6":" Disfruta Estudiapp",
+   "ABOUT_7":" ¿Eres comerciante?",
+   "ABOUT_8":" Solo inscríbete en nuestra app, y selecciona la capacitación que necesites, por ejemplo tenemos una capacitación sobre las ventajas de formalizarte, o como hacer crecer tus ingresos.",
+   "ABOUT_9":"¿Estudiante de colegio?",
+   "ABOUT_10":" Tienes problemas con las matemáticas o alguna otra materia,nostros te ayudamos. ",
+   "ABOUT_11":"Tú y tus compañeros de clase pueden asistir a tutorías avaladas por las mejores universidades, donde puedes mejorar tu rendimiento académico y tener mejores notas en tu colegio",
+   "ABOUT_12":"¿Eres líder de grupo de estudiantes de colegio?",
+   "ABOUT_13":"¿Te interesa que tu grupo de estudiantes tengas un mejor resultado en tu materia?",
+   "ABOUT_14":"Gestiona tutorías  impartidas por las mejores universidades, con clases didácticas y refuerzo en tu materia o actividades extracurriculares llevaras  a tu colegio al éxito."       
+   
+
+
+
+
+  
+  
+ 
+  
 
 }

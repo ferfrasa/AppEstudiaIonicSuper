@@ -1,12 +1,12 @@
-<ion-menu [content]="content" *ngIf="isThereASession()">
-        <ion-header>
-          <ion-toolbar>
-            <ion-title>Pages</ion-title>
+<ion-menu [content]="content" *ngIf="isThereASession()" color="primary">
+        <ion-header color="primary">
+          <ion-toolbar color="primary">
+            <ion-title>MENU</ion-title>
           </ion-toolbar>
         </ion-header>
     
-        <ion-content>
-          <ion-list>
+        <ion-content class="pep" color="primary">
+          <ion-list class="pep">
             <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
               {{p.title}}
             </button>
@@ -22,4 +22,4 @@
         </ion-content>
     
       </ion-menu>
-      <ion-nav #content [root]="rootPage"></ion-nav>
+      <ion-nav #content [root]="rootPage" color="primary"></ion-nav>

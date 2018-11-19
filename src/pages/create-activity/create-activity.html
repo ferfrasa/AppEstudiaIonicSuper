@@ -6,13 +6,68 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>CreateActivity</ion-title>
-  </ion-navbar>
+    <ion-navbar color="thir">
+        <ion-title>{{'CREATE_ACTIVITY' | translate}} </ion-title>
+        <ion-buttons start>
+          <button ion-button (click)="cancel()">
+            <span color="primary" showWhen="ios">
+                {{ 'CANCEL_BUTTON' | translate }}
+            </span>
+            <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+          </button>
+        </ion-buttons>
+        <ion-buttons end>
+          <button ion-button (click)="done()" [disabled]="!isReadyToSave" strong>
+            <span color="primary" showWhen="ios">
+                {{ 'DONE_BUTTON' | translate }}
+            </span>
+            <ion-icon name="md-checkmark" showWhen="core,android,windows">
+    
+            </ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-navbar>
+    
 
 </ion-header>
 
 
 <ion-content padding>
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="createActivity()">
+     
+        <ion-list>
+          <ion-item>
+            <ion-input type="text" placeholder="{{ 'NAME_ACTIVITY' | translate }}" formControlName="name_activity"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" placeholder="{{ 'DESCRIPTION_ACTIVITY' | translate }}" formControlName="description_activity"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>{{ 'DATE_ACTIVITY' | translate }}</ion-label>
+            <ion-datetime  displayFormat="MMM DD, YYYY HH:mm" (ionChange)="dateChanged($event)"  [min]="minDate" max="2050-12-31" formControlName="fecha_activity"></ion-datetime>
+          </ion-item>
+          <ion-item>
+              <ion-input type="text" placeholder="{{ 'PLACE_ACTIVITY' | translate }}" formControlName="lugar_activity"></ion-input>
+          </ion-item>
+  
+          <ion-list>
+              <ion-item >
+                <ion-label>{{'TYPE_ACTIVITY' | translate}}</ion-label>
+                <ion-select formControlName="type_activity_id">
+                  <div *ngFor="let item of type_activities">
+                  <ion-option   [value]="item.id">{{item.name}}</ion-option>
+                </div>
+                </ion-select>
+             
+              </ion-item>
+            </ion-list>
+        </ion-list>
+      </form>
+     <!-- <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+      </ion-item>-->
+
+     
 
 </ion-content>

@@ -7,7 +7,7 @@
 
 <ion-header>
 
-    <ion-navbar>
+    <ion-navbar color="primary">
       <ion-title>{{ item.name }}</ion-title>
     </ion-navbar>
   
@@ -30,90 +30,67 @@
           {{item.description}}
       </p>
     </ion-card-content>
-
+    
     <ion-item>
-      <ion-icon name='musical-notes' item-start style="color: #d03e84"></ion-icon>
-      Albums
-      <ion-badge item-end>9</ion-badge>
-    </ion-item>
+      <ion-icon name="star" item-start style="color: #55acee"></ion-icon>
+   
+    {{ 'SCORE' | translate }}
+    <ion-badge item-end>{{item.prom}}</ion-badge>
+  </ion-item>
+  <ion-item>
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-start clear small>
+          <ion-icon ios="ios-browsers" md="md-browsers"></ion-icon>
+          <div>{{item.category}}</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon ios="ios-globe" md="md-globe"></ion-icon>
+          <div>{{item.spectator}}</div>
+        </button>
+      </ion-col>
+      <ion-col center text-center>
+          
+         <button ion-button icon-left clear small>
+            <ion-icon ios="ios-globe" md="md-globe"></ion-icon>
+             <div>   {{item.fecha}}</div>
+         </button>
+     </ion-col>
+     
+     
+    </ion-row>
 
-    <ion-item>
-      <ion-icon name='logo-twitter' item-start style="color: #55acee"></ion-icon>
-      Followers
-      <ion-badge item-end>260k</ion-badge>
-    </ion-item>
+  </ion-item>
+
+  <ion-grid class="tags">
+    <ion-label>{{ 'TAGS_PROJECT'| translate }}</ion-label>
+      <ion-row >
+        <ion-col *ngFor= "let tag of projects_tags">
+          <div [ngStyle]="{'background-color': tag.color}">{{tag.nombre}}</div>
+        </ion-col>
+        
+      </ion-row>
+     <!-- <ion-row>
+        <ion-col>
+          <div>1 of 3</div>
+        </ion-col>
+        <ion-col>
+          <div>2 of 3</div>
+        </ion-col>
+        <ion-col>
+          <div>3 of 3</div>
+        </ion-col>
+      </ion-row>-->
+  </ion-grid>
+    
+
+    
 
   </ion-card>
  
- 
-  <ion-card>
-      <ion-card-header>
-        Header..
-      </ion-card-header>
-      <ion-card-content>
-        The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-      </ion-card-content>
-    </ion-card>
 
-
-   <!-- <ion-grid class="tags">-->
-        
-          <ion-row >
-            <ion-col>
-                <ion-card>
-                    <ion-card-header>
-                      Header1
-                    </ion-card-header>
-                    <ion-card-content>
-                      The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-                    </ion-card-content>
-                  </ion-card>
-            </ion-col>
-            <ion-col>
-                <ion-card>
-                    <ion-card-header>
-                      Header2
-                    </ion-card-header>
-                    <ion-card-content>
-                      The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-                    </ion-card-content>
-                  </ion-card>
-            </ion-col>
-            <ion-col >
-                <ion-card>
-                    <ion-card-header>
-                      Header3
-                    </ion-card-header>
-                    <ion-card-content>
-                      The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-                    </ion-card-content>
-                  </ion-card>
-            </ion-col>
-            <ion-col>
-                <ion-card>
-                    <ion-card-header>
-                      Header4
-                    </ion-card-header>
-                    <ion-card-content>
-                      The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-                    </ion-card-content>
-                  </ion-card>
-            </ion-col>
-            
-          </ion-row>
-          <ion-row>
-            <ion-col>
-              <div>1 of 3</div>
-            </ion-col>
-            <ion-col>
-              <div>2 of 3</div>
-            </ion-col>
-            <ion-col>
-              <div>3 of 3</div>
-            </ion-col>
-          </ion-row>
-      <!--</ion-grid>-->
-  
   </ion-content>
 
 

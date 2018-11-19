@@ -79,7 +79,7 @@ export class LoginPage {
     }).catch(error=>{
       loading.dismiss();
         console.log(error);
-        this.alert('Error', 'Ha ocurrido un error inesperado. Por favor intente nuevamente.');
+        this.alert('Error', error);
     })
 
    /* this.user.login(this.account).subscribe((resp) => {
@@ -114,6 +114,9 @@ export class LoginPage {
     if(user && jwt && token  ){
         this.navCtrl.setRoot(MainPage);
     }
+  }
+  recordar(){
+    
   }
 
 }

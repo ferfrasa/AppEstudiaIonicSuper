@@ -69,14 +69,32 @@ export class AuthServiceProvider {
          ,
         'Authorization':'Bearer '+jwt
        });
+
+       console.log("data",data)
       
      const options = { headers: headers };
       
      let json = '{"'+model +'":'+data+'}'
-     console.log(json);
+     console.log("json",json);
      let apiUrl=localStorage.getItem("apiUrl");
      return this.http.post(apiUrl+type , json, options);
-   }
+  }
+
+  putDataJwt(data, type, model){
+    let jwt = localStorage.getItem("jwt");
+    let headers = new HttpHeaders( //cabecera
+      {
+        'Content-Type': 'application/json'
+        ,
+       'Authorization':'Bearer '+jwt
+      });
+      const options = { headers: headers };
+      let json = '{"'+model +'":'+data+'}'
+      console.log(json);
+      let apiUrl=localStorage.getItem("apiUrl");
+      return this.http.put(apiUrl+type, json, options);
+
+  }
 
   getData(uri) {
    // let jwt=localStorage.getItem("jwt");

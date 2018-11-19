@@ -30,7 +30,8 @@ export class CreatePrivateProjectPage {
   spectators: Array<{id: number, name: string}>;
   tags: Array<{id: number, name: string}>
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder,  public authServiceProvider: AuthServiceProvider,
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder,
+      public authServiceProvider: AuthServiceProvider,
     public loadingCtrl:LoadingController, public viewCtrl:ViewController, public alertController: AlertController,
     public  translateService:TranslateService, public toastCtrl: ToastController  ) {
 

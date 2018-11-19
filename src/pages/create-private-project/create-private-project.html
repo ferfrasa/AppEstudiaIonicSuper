@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="thir">
     <ion-title>{{'CREATE_PRIVATE_PROJECT'| translate }}</ion-title>
     <ion-buttons start>
       <button ion-button (click)="cancel()">
@@ -34,10 +34,9 @@
 
 
 <ion-content padding>
-<ion-label>A un proyecto privado solo podran acceder los estudiantes universitarios que tengan el 
-  codigo del mismo </ion-label>
+<ion-label>{{'DESCRIPTION_PRIVATE'| translate}} <br/>{{'DESCRIPTION_PRIVATE_2'| translate}}</ion-label>
 
-<ion-label>Llena los campos a continuación para crear uno </ion-label>
+<ion-label>{{'TEXT_PRIVATE'|translate}} </ion-label>
 
 <form *ngIf="form" [formGroup]="form">
      

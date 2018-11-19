@@ -6,8 +6,8 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>¿Quién eres?</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>{{ 'WHO_ROL' | translate }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,12 +16,12 @@
 <ion-content padding>
     <ion-card>
         <ion-card-header>
-          Selecciona tu rol en la aplicación
+          {{ 'SELECT_ROL' | translate }}
         </ion-card-header>
       
         <ion-list>
-          <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-            <ion-icon [name]="item.icon"  item-start></ion-icon>
+          <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)" >
+            <ion-icon [name]="item.icon"  item-start color="primary"></ion-icon>
             {{item.title}}
           </button>
 

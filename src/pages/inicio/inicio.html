@@ -5,147 +5,142 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-    <ion-navbar>
-        <button ion-button menuToggle>
-            <ion-icon name="menu"></ion-icon>
-          </button>
-      <ion-title>
-        Bienvenido a EstudiaAPP
-      </ion-title>
-    </ion-navbar>
-    <ion-toolbar>
-      <ion-buttons end>
-        <button  ion-button icon-only #button2 (click)="buttonClick(button2)">
-          <ion-icon name="search"></ion-icon>
-        </button>
-      </ion-buttons>
-      <ion-segment [(ngModel)]="pet">
-        <ion-segment-button value="for_me">
-            {{ 'RECOMMENDED' | translate }}
-        </ion-segment-button>
-        <ion-segment-button value="everybody">
-            {{'EVERYBODY' | translate }}
-        </ion-segment-button>
-         
-      </ion-segment>
-    </ion-toolbar>
-   
-  </ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{ 'WELCOME_RECOM' | translate }}
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <!--<ion-buttons end>
+      <button ion-button icon-only #button2 (click)="buttonClick(button2)">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>-->
+    <ion-segment [(ngModel)]="pet" color="thir">
+      <ion-segment-button value="for_me">
+        {{ 'RECOMMENDED' | translate }}
+      </ion-segment-button>
+      <ion-segment-button value="everybody">
+        {{'EVERYBODY' | translate }}
+      </ion-segment-button>
 
- 
-  
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
 
 <ion-content padding>
-   
 
   <div [ngSwitch]="pet">
-   <div *ngSwitchCase="'everybody'">
-     <div *ngFor= "let item of projects">
-     <ion-card  *ngIf="(item.spectator == findTodos())">
-    <img src="{{item.img}}"/>
-    <ion-card-content>
-      <ion-card-title>
-        {{item.name}}
-      </ion-card-title>
-      <p>
-       {{item.description}}
-      </p>
-    </ion-card-content>
-    <ion-row>
-        <ion-col>
-          <button ion-button icon-start clear small>
-            <ion-icon ios="ios-contacts" md="md-contacts"></ion-icon>
-            <div>{{item.partic}}</div>
-          </button>
-        </ion-col>
-        <ion-col>
-          <button ion-button icon-start clear small>
-            <ion-icon ios="ios-star" md="md-star"></ion-icon>
-            <div>{{item.prom}}</div>
-          </button>
-        </ion-col>
-        <!--<ion-col center text-center>
+    <div *ngSwitchCase="'everybody'">
+      <div *ngFor="let item of projects">
+        <ion-card *ngIf="(item.spectator == findTodos())">
+          <img src="{{item.img}}" />
+          <ion-card-content>
+            <ion-card-title>
+              {{item.name}}
+            </ion-card-title>
+            <p>
+              {{item.description}}
+            </p>
+          </ion-card-content>
+          <ion-row>
+            <ion-col>
+              <button ion-button icon-start clear small>
+                <ion-icon ios="ios-contacts" md="md-contacts" color="icon"></ion-icon>
+                <div>{{item.partic}}</div>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-start clear small>
+                <ion-icon ios="ios-star" md="md-star" color="star"></ion-icon>
+                <div color="dark">{{item.prom}}</div>
+              </button>
+            </ion-col>
+            <!--<ion-col center text-center>
           <ion-note>
             11h ago
           </ion-note>
         </ion-col>-->
-        <ion-col> 
-            <button ion-button icon-left (click)="joinProject($event, item)">
-              <ion-icon ios="ios-hand" md="md-hand"></ion-icon>
+            <ion-col>
+              <button ion-button icon-left (click)="joinProject($event, item)">
+                <ion-icon ios="ios-hand" md="md-hand"></ion-icon>
 
                 {{'JOIN'| translate}}
-            </button>
-         </ion-col>
-         <ion-col> 
-          <button ion-button icon-left (click)="viewProject($event, item)">
-            <ion-icon ios="ios-arrow-dropright-circle" md="md-arrow-dropright-circle"></ion-icon>
-              {{'SEE_MORE'| translate}}
-          </button>
-       </ion-col>
-      </ion-row>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button color="thir" icon-left (click)="viewProject($event, item)">
+                <ion-icon  ios="ios-arrow-dropright-circle" md="md-arrow-dropright-circle"></ion-icon>
+                {{'SEE_MORE'| translate}}
+              </button>
+            </ion-col>
+          </ion-row>
 
-    </ion-card>
+        </ion-card>
+      </div>
     </div>
-   </div>
 
-   <div *ngSwitchCase="'for_me'">
-      <div *ngFor= "let item of projects">
-      <ion-card *ngIf="(item.spectator == findRol() && item.category !=9)">
-     <img src="{{item.img}}"/>
-     <ion-card-content>
-       <ion-card-title>
-         {{item.name}}
-       </ion-card-title>
-       <p>
-       {{item.description}}
-       </p>
-     </ion-card-content>
-     <ion-row>
-         <ion-col>
-           <button ion-button icon-start clear small>
-             <ion-icon ios="ios-contacts" md="md-contacts"></ion-icon>
-             <div>{{item.partic}}</div>
-           </button>
-         </ion-col>
-         <ion-col>
-           <button ion-button icon-start clear small>
-             <ion-icon ios="ios-star" md="md-star"></ion-icon>
-             <div>{{item.prom}}</div>
-           </button>
-         </ion-col>
-         <!--<ion-col center text-center>
+    <div *ngSwitchCase="'for_me'">
+      <div *ngFor="let item of projects">
+        <ion-card *ngIf="(item.spectator == findRol() && item.category !=9)">
+          <img src="{{item.img}}" />
+          <ion-card-content>
+            <ion-card-title>
+              {{item.name}}
+            </ion-card-title>
+            <p>
+              {{item.description}}
+            </p>
+          </ion-card-content>
+          <ion-row>
+            <ion-col>
+              <button ion-button icon-start clear small>
+                <ion-icon ios="ios-contacts" md="md-contacts" color="icon"></ion-icon>
+                <div>{{item.partic}}</div>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-start clear small>
+                <ion-icon ios="ios-star" md="md-star" color="star" color="secondary"></ion-icon>
+                <div color="dark">{{item.prom}}</div>
+              </button>
+            </ion-col>
+            <!--<ion-col center text-center>
            <ion-note>
              11h ago
            </ion-note>
          </ion-col>-->
-         <ion-col>
-            <button ion-button icon-left (click)="joinProject($event, item)">
+            <ion-col>
+              <button ion-button icon-left (click)="joinProject($event, item)">
                 <ion-icon ios="ios-hand" md="md-hand"></ion-icon>
-              {{'JOIN'| translate}}
-            </button>
-         </ion-col>
-         <ion-col>
-            <button ion-button icon-left (click)="viewProject($event, item)">
-                <ion-icon ios="ios-arrow-dropright-circle"
-                 md="md-arrow-dropright-circle"></ion-icon>
-              {{'SEE_MORE'| translate }}
-            </button>
-         </ion-col>
+                {{'JOIN'| translate}}
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-left (click)="viewProject($event, item)" color="thir">
+                <ion-icon ios="ios-arrow-dropright-circle" md="md-arrow-dropright-circle"></ion-icon>
+                {{'SEE_MORE'| translate }}
+              </button>
+            </ion-col>
 
-       </ion-row>
- 
-     </ion-card>
+          </ion-row>
+
+        </ion-card>
+      </div>
     </div>
-  </div>
-    
-    <ion-title *ngIf="(projects.length == 0)">{{ 'NOTHING' | translate }}</ion-title>
-   
-</div>
 
-<ion-item>
-  <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-    {{p.title}}
-  </button>
-</ion-item>
+    <ion-title *ngIf="(projects.length == 0)">{{ 'NOTHING' | translate }}</ion-title>
+
+  </div>
+
+  <ion-item>
+    <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+      {{p.title}}
+    </button>
+  </ion-item>
 
 </ion-content>
