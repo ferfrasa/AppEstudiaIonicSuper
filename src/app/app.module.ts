@@ -20,6 +20,8 @@ import {AngularFireAuthModule} from 'angularfire2/auth';
 import { Authentication } from '../service/authentication';
 import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
 
 
 // The translate loader needs to know where to load i18n files
@@ -76,6 +78,7 @@ export function provideSettings(storage: Storage) {
     Camera,
     SplashScreen,
     StatusBar,
+    InAppBrowser,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },

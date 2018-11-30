@@ -22,6 +22,17 @@ export class ActividadesPage {
   activities: Array<{id: number, name: string, description: string, fecha:string, lugar:string, name_project:string,
   status:string,type:string, img:string}>;
   images: string[];
+  imagesA: string[];
+
+  imagesS: string[];
+  imagesC: string[];
+  imagesD: string[];
+  imagesM: string[];
+  imagesE: string[];
+  imagesP: string[];
+  imagesO: string[];
+
+
   projects: Array<{id: number, name: string}>;
  
 
@@ -38,11 +49,12 @@ export class ActividadesPage {
        });
        this.images = ['a.jpg','b.jpg','c.jpg','d.jpg'
        ,'e.jpg','f.jpg','g.jpg','h.jpg','i.jpg','j.jpg','k.jpg','l.jpg','m.jpg','n.jpg','o.jpg','p.jpg',
-       'q.jpg','r.jpg','s.jpg','t.jpg','u.jpg','v.jpg','w.jpg','x.jpg','y.jpg','z.jpg','15.jpg','16.jpg','17.jpg','18.jpg',
+       'q.jpg','r.jpg','s.jpg','t.jpg','u.jpg','v.jpg','w.jpg','x.jpg','y.jpg','z.jpg','15.jpg','16.jpg','17.jpg',
+       '18.jpg',
        '19.jpg','20.jpg','21.jpg','22.jpg','23.jpg','24.jpg','25.jpg','26.jpg','27.jpg','28.jpg','29.jpg',
        '30.jpg','31.jpg','32.jpg','33.jpg','34.jpg','35.jpg','36.jpg','37.jpg','38.jpg','39.jpg',
        '40.jpg', '41.jpg', '42.jpg', '43.jpg', '44.jpg', '45.jpg', '46.jpg', '47.jpg', '48.jpg', '49.jpg',
-       '50.jpg','51.jpg','52.jpg','53.jpg','54.jpg','55.jpg','56.jpg','57.jpg','5.8jpg','59.jpg',
+       '50.jpg','51.jpg','52.jpg','53.jpg','54.jpg','55.jpg','56.jpg','57.jpg','58.jpg','59.jpg',
        '60.jpg', '61.jpg', '62.jpg', '63.jpg', '64.jpg', '65.jpg', '66.jpg', '67.jpg', '68.jpg', '69.jpg',
        '70.jpg', '71.jpg', '72.jpg', '73.jpg', '74.jpg', '75.jpg', '76.jpg',];
        this.activities=[];

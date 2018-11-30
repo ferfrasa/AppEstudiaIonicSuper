@@ -43,7 +43,7 @@
           <ion-input type="text" placeholder="{{ 'COMENTARIO' | translate }}" formControlName="comentario"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-input type="number" placeholder="{{ 'SCORE' | translate }}" formControlName="calificacion"></ion-input>
+            <ion-input type="number" min="1" max="5" placeholder="{{ 'SCORE' | translate }}" formControlName="calificacion"></ion-input>
         </ion-item>
       </ion-list>
     </form>

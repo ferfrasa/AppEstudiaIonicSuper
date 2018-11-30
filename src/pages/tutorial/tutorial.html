@@ -8,6 +8,22 @@
 
 <ion-content no-bounce>
   <ion-slides pager="true" dir="{{dir}}" (ionSlideWillChange)="onSlideChangeStart($event)">
+
+      <ion-slide>
+          <img src="assets/img/ica-slidebox-img-4.png" class="slide-image" />
+          <h2 class="slide-title">{{ 'TUTORIAL_SLIDE4_TITLE' | translate }}</h2>
+    
+              <div class="card">
+                  <ion-item>
+
+                      <div class="video-container">
+                          <iframe src="https://www.youtube.com/embed/0hXNM0WQU-k" frameborder="0" width="560" height="315"></iframe>
+                      </div>
+                  </ion-item>
+              </div>
+        </ion-slide>
+
+    
     <ion-slide *ngFor="let slide of slides">
       <img [src]="slide.image" class="slide-image" />
       <h2 class="slide-title" [innerHTML]="slide.title"></h2>

@@ -63,6 +63,9 @@ export class SignupPage {
   }
 
   doSignup2(loading) {
+
+    
+
     return this.authServiceProvider.postData(this.account, "users")
     .subscribe(
       data => {
@@ -103,6 +106,12 @@ export class SignupPage {
       content: 'Creando cuenta. Por favor, espere...'
     });
     loading.present();
+    
+    if(this.account.password !== this.account.password_confirmation){
+      loading.dismiss();
+      this.alert("Error", "Las contraseñas no coinciden")
+    }else{
+   
 
     this.auth.createUserWithEmailAndPassword(this.account.email, this.account.password)
     .then(result => {
@@ -118,17 +127,10 @@ export class SignupPage {
     }).catch(error => {
         loading.dismiss();
         console.log(error);
-        /*code: "auth/network-request-failed"
-        code: "auth/email-already-in-use"code: 
-        "auth/email-already-in-use"
-
-        auth/invalid-email
-        message: "A network error (such as timeout, interr*/
-
-
-
+       
         this.alert('Error', error);
       });
+    }
    }
         // return this.auth.createUserWithGoogle();
 
@@ -144,7 +146,9 @@ export class SignupPage {
   compararPassword(){
     if(this.account.password !== this.account.password_confirmation){
       this.alert("Error", "Las contraseñas no coinciden")
+      return false;
     }
+    return true;
   }
   
   alert(title: string, message: string) {

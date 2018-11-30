@@ -33,6 +33,13 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-label color="primary">{{'FIND'|translate}} <br/> {{'FIND_2'|translate}}  </ion-label>
+  <ion-title color="primary"> {{'FIND_3'|translate}} </ion-title>
+  <ion-fab top right edge>
+    <ion-label>{{'MANUAL'|translate}}</ion-label>
+      <button ion-fab mini color="manual" (click)="openLink()"><ion-icon ios="ios-archive" md="md-archive"></ion-icon>
+      </button>
+    </ion-fab>
 
   <div [ngSwitch]="pet">
     <div *ngSwitchCase="'everybody'">

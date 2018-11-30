@@ -101,7 +101,7 @@
   "SEC_PROJECT":"Seleccione proyecto",
   "TEXT_FIL_ACTIVITY":"Acá puedes encontrar actividades recientes a los proyectos que perteneces",
   "SCORE_CAL":"Tú apreciación",
-  "RATE_PROJECT":"Califica este proyecto",
+  "RATE_PROJECT":"Califica esta actividad",
   "DESCRIPTION_PRIVATE":"A un proyecto privado solo podran acceder los estudiantes ",
   "DESCRIPTION_PRIVATE_2":"universitarios que tengan el codigo del mismo",
   "TEXT_PRIVATE":"Llena los campos a continuación para crear uno",
@@ -132,8 +132,11 @@
    "ABOUT_11":"Tú y tus compañeros de clase pueden asistir a tutorías avaladas por las mejores universidades, donde puedes mejorar tu rendimiento académico y tener mejores notas en tu colegio",
    "ABOUT_12":"¿Eres líder de grupo de estudiantes de colegio?",
    "ABOUT_13":"¿Te interesa que tu grupo de estudiantes tengas un mejor resultado en tu materia?",
-   "ABOUT_14":"Gestiona tutorías  impartidas por las mejores universidades, con clases didácticas y refuerzo en tu materia o actividades extracurriculares llevaras  a tu colegio al éxito."       
-   
+   "ABOUT_14":"Gestiona tutorías  impartidas por las mejores universidades, con clases didácticas y refuerzo en tu materia o actividades extracurriculares llevaras  a tu colegio al éxito.",       
+   "FIND":"Encuentra aca proyectos que te pueden interesar",
+   "FIND_2":"para unirte según tu perfil",
+   "FIND_3":"!Conócelos!",
+   "MANUAL":"Manual U"   
 
 
 

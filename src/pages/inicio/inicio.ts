@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController,ToastController, LoadingController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { Todos, Comerciantes,Profesor, LiderColegio , Estudiante, ComerciantesRol, EstudianteRol, ProfesorRol,LiderColegioRol} from '../index';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 /**
  * Generated class for the InicioPage page.
@@ -23,6 +24,15 @@ export class InicioPage {
     
   projects_user: Array<{id: string}>;
   images: string[];
+  imagesA: string[];
+
+  imagesS: string[];
+  imagesC: string[];
+  imagesD: string[];
+  imagesM: string[];
+  imagesE: string[];
+  imagesP: string[];
+  imagesO: string[];
   pet: any;
   
   private projectJoinErrorString: string;
@@ -30,18 +40,86 @@ export class InicioPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public menu:MenuController,
       public authServiceProvider: AuthServiceProvider,public translateService: TranslateService,
-      public toastCtrl: ToastController,public loadingCtrl: LoadingController) {
+      public toastCtrl: ToastController,public loadingCtrl: LoadingController, private iap: InAppBrowser
+    ) {
     this.projects=[];
     this.projects_user=[];
-    this.images = ['a.jpg','b.jpg','c.jpg','d.jpg'
+
+    this.imagesA=['21.jpg',
+    ,'29.jpg',
+    ,'50.jpg',
+    ,'55.jpg',
+    ,'60.jpg',
+    ,'69.jpg',
+    ,'72.jpg',
+    ,'75.jpg',
+    ,'t.jpg'];
+
+    this.imagesS=['16.jpg',
+    ,'18.jpg',
+    ,'26.jpg',
+    ,'28.jpg',
+    ,'37.jpg',
+    ,'39.jpg',
+    ,'47.jpg',
+    ,'61.jpg',
+    ,'a.jpg',
+    ,'b.jpg',
+    ];
+    this.imagesC=['19.jpg',
+    ,'23.jpg',
+    ,'24.jpg',
+    ,'25.jpg',
+    ,'27.jpg',
+    ,'34.jpg',
+    ,'41.jpg',
+    ,'48.jpg',
+    ,'52.jpg',
+    ,'56.jpg',
+    ,'62.jpg',
+    ,'64.jpg',
+    ,'66.jpg',
+    ,'68.jpg',
+    ,'70.jpg',
+    ,'76.jpg'];
+    this.imagesD=['20.jpg',
+    ,'35.jpg',
+    ,'40.jpg',
+    ,'43.jpg'
+    ];
+    this.imagesM=['15.jpg',
+    ,'42.jpg',
+    ,'58.jpg'];
+    this.imagesE=['22.jpg',
+    ,'30.jpg',
+    ,'32.jpg',
+    ,'33.jpg',
+    ,'36.jpg',
+    ,'59.jpg',
+    ,'67.jpg',
+    ,'73.jpg'];
+    this.imagesP=['31.jpg',
+    ,'38.jpg',
+    ,'45.jpg',
+    ,'49.jpg',
+    ,'63.jpg',
+    ,'74.jpg'];
+    this.imagesO=['44.jpg',
+    ,'51.jpg',
+    ,'53.jpg',
+    ,'54.jpg',
+    ,'65.jpg'];
+
+    this.images=[];
+    /*this.images = ['a.jpg','b.jpg','c.jpg','d.jpg'
        ,'e.jpg','f.jpg','g.jpg','h.jpg','i.jpg','j.jpg','k.jpg','l.jpg','m.jpg','n.jpg','o.jpg','p.jpg',
        'q.jpg','r.jpg','s.jpg','t.jpg','u.jpg','v.jpg','w.jpg','x.jpg','y.jpg','z.jpg','15.jpg','16.jpg','17.jpg','18.jpg',
        '19.jpg','20.jpg','21.jpg','22.jpg','23.jpg','24.jpg','25.jpg','26.jpg','27.jpg','28.jpg','29.jpg',
        '30.jpg','31.jpg','32.jpg','33.jpg','34.jpg','35.jpg','36.jpg','37.jpg','38.jpg','39.jpg',
        '40.jpg', '41.jpg', '42.jpg', '43.jpg', '44.jpg', '45.jpg', '46.jpg', '47.jpg', '48.jpg', '49.jpg',
-       '50.jpg','51.jpg','52.jpg','53.jpg','54.jpg','55.jpg','56.jpg','57.jpg','5.8jpg','59.jpg',
+       '50.jpg','51.jpg','52.jpg','53.jpg','54.jpg','55.jpg','56.jpg','57.jpg','58.jpg','59.jpg',
        '60.jpg', '61.jpg', '62.jpg', '63.jpg', '64.jpg', '65.jpg', '66.jpg', '67.jpg', '68.jpg', '69.jpg',
-       '70.jpg', '71.jpg', '72.jpg', '73.jpg', '74.jpg', '75.jpg', '76.jpg',];
+       '70.jpg', '71.jpg', '72.jpg', '73.jpg', '74.jpg', '75.jpg', '76.jpg',];*/
     this.pet = "for_me";
     this.translateService.get('JOIN_PROJECT_ERROR').subscribe((value) => {
       this.projectJoinErrorString = value;
@@ -74,7 +152,30 @@ export class InicioPage {
             continue;
           } //valida que se muestre segun rol del perfil 
           else if(data[i]['spectator_id']==Todos || data[i]['spectator_id']==this.findRol()){
- 
+            if(data[i]['category_id']==1){
+              this.images=this.imagesA  
+            }else if(data[i]['category_id']==2){ 
+              this.images=this.imagesS  
+
+            }else if(data[i]['category_id']==3){
+              this.images=this.imagesC  
+
+            }else if(data[i]['category_id']==6){
+              this.images=this.imagesD  
+
+            }else if(data[i]['category_id']==7){
+              this.images=this.imagesM  
+
+            }else if(data[i]['category_id']==8){
+              this.images=this.imagesE  
+
+            }else if(data[i]['category_id']==9){
+              this.images=this.imagesP  
+
+            }else if(data[i]['category_id']==10){
+              this.images=this.imagesO
+
+            }
             this.projects.push({
                 id: parseInt(JSON.stringify(data[i]['id'])),
                 name: data[i]['name_project'].toUpperCase(),
@@ -104,6 +205,10 @@ export class InicioPage {
   ionViewWillLeave() {
     // enable the root left menu when leaving the tutorial page
     //this.menu.enable(false);
+  }
+
+  openLink(){
+    this.iap.create("https://drive.google.com/a/sistica.com/file/d/1GXKuhCpdhIueKX9tek0P7jlKZ_FlWqQh/view?usp=drivesdk","_blank");
   }
   findRol(){
     switch(localStorage.getItem('user_type')) { 
